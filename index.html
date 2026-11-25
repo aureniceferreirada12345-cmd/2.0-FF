@@ -473,19 +473,18 @@ document.head.appendChild(st);
 try{['mc_gate','mc_gate_adm','mc_adm_k','mc_adm_u','mc_adm_s','mc_admacc','mf_ghost','mc_photo'].forEach(k=>{localStorage.removeItem(k);sessionStorage.removeItem(k)})}catch(e){}   /* LIMPEZA ÚNICA: apaga restos de acesso antigo (inclui chave guardada no aparelho) */
 let msg='';{const kk=rd('mc_kick');if(kk){msg=kk;try{localStorage.removeItem('mc_kick')}catch(e){}}}
 window.__gateShow=function(){try{if(!g)boot()}catch(e){}};
-if(rd('mf_guest')==='1'&&!rd('mc_acck'))return;   /* convidado: entra direto, sem a tela inicial */
+try{localStorage.removeItem('mf_guest')}catch(e){}   /* sem convidado: todo mundo precisa de conta */
 if(rd('mc_acck')&&rd('mf_gu'))return;   /* já logado neste aparelho: entra direto */
 function boot(){
  g=document.createElement('div');g.id='gate';
  let kn='';try{const o=JSON.parse(rd('mf_gl')||'null');if(o&&o.n)kn=String(o.n).replace(/[<>&"]/g,'')}catch(x){}
- g.innerHTML='<div class="gtt">MINE FIRE BETA</div><div class="gss">'+(kn?('BEM-VINDO DE VOLTA, '+kn):'ENTRE PARA SALVAR SUA CONTA')+'</div>'+(kn?'<button class="gbt" id="gg">ENTRAR</button>':'')+'<button class="gbt" id="gm" style="font-size:min(4vh,5.6vw)">ENTRAR COM E-MAIL</button><button class="gbt" id="gv" style="background:#3a3a46;border-bottom-color:#22222c;color:#fff;font-size:min(3.6vh,5vw)">ENTRAR COMO CONVIDADO</button><div class="gss" style="font-size:min(2.3vh,3.3vw);max-width:86vw;text-align:center;color:#8d8c99">CONVIDADO: SEM CONTA · NÃO SALVA NA NUVEM · FORA DO RANKING</div><div class="gee" id="ge"></div>';
+ g.innerHTML='<div class="gtt">MINE FIRE BETA</div><div class="gss">'+(kn?('BEM-VINDO DE VOLTA, '+kn):'CRIE SUA CONTA PARA JOGAR')+'</div>'+(kn?'<button class="gbt" id="gg">ENTRAR</button>':'')+'<button class="gbt" id="gm" style="font-size:min(4vh,5.6vw)">ENTRAR COM E-MAIL</button><div class="gss" style="font-size:min(2.6vh,3.6vw);max-width:86vw;text-align:center;color:#8d8c99">PARA JOGAR, CRIE SUA CONTA COM E-MAIL E SENHA OU ENTRE NA SUA CONTA</div><div class="gee" id="ge"></div>';
  document.body.appendChild(g);
  const e=g.querySelector('#ge');e.textContent=msg;
  const run=async(sil)=>{e.style.color='#ffc107';e.textContent=sil?'ENTRANDO…':'ABRINDO GOOGLE…';let r='';
   try{r=window.__googleLogin?await window.__googleLogin(sil):'CONECTANDO… TENTE DE NOVO';if(r==='CONFLITO')r=await window.__googleSwitch()}catch(x){r='ERRO, TENTE DE NOVO'}
   if(r==='ok'){e.textContent='CONTA ENCONTRADA! ENTRANDO…'}else if(r==='ok-linked'||r==='ok-same'){window.__gateOpen()}else if(r==='SEM_SESSAO'){e.textContent='';if(window.__emailUI)window.__emailUI(function(){window.__gateOpen()})}else{e.style.color='#ff6a6a';e.textContent=r}};
  const gg=g.querySelector('#gg');if(gg)gg.onclick=()=>run(true);
- g.querySelector('#gv').onclick=()=>{wr('mf_guest','1');window.__gateOpen()};
  g.querySelector('#gm').onclick=()=>{if(window.__emailUI)window.__emailUI(function(){window.__gateOpen()});else e.textContent='CONECTANDO… TENTE DE NOVO'};
  }
 if(document.body)boot();else document.addEventListener('DOMContentLoaded',boot)
@@ -5675,8 +5674,54 @@ var MNT=null;
   setInterval(function(){if(MNT&&MNT.on)paintM()},1500);
 })();
 window.__net={on:false,n:0};
+/* ===== [RELIGADO] CONEXÃO ONLINE COM O FIREBASE (mine-fire-e20fc) ===== */
+window.__fbL=window.__fbL||{};
+window.__fbLoad=function(src){return window.__fbL[src]||(window.__fbL[src]=new Promise(function(res,rej){var q=document.createElement('script');q.src=src;q.onload=res;q.onerror=function(){delete window.__fbL[src];rej(new Error('net'))};document.head.appendChild(q)}))};
+(function(){
+  var CFGO={apiKey:"AIzaSyD0B9Mqv9DhupMOuKw7e-9JvaXzjRXdmEk",authDomain:"mine-fire-e20fc.firebaseapp.com",databaseURL:"https://mine-fire-e20fc-default-rtdb.firebaseio.com",projectId:"mine-fire-e20fc",storageBucket:"mine-fire-e20fc.firebasestorage.app",messagingSenderId:"336908586573",appId:"1:336908586573:web:036f68d3c69e6b12301604"};
+  var B='https://www.gstatic.com/firebasejs/10.14.1/',started=false,wired=false;
+  function wire(db){
+    if(wired)return;wired=true;
+    var rn=ROOM.replace(/\//g,'_');
+    root=db.ref('social/zb/'+rn);evRef=db.ref('social/zbev/'+rn);me=root.child(myId);
+    SVT=firebase.database.ServerValue.TIMESTAMP;
+    db.ref('.info/serverTimeOffset').on('value',function(s){SOFF=+s.val()||0});
+    var cA,cC,cR,eA;
+    function up(s){if(s.key===myId)return;var v=s.val();if(!v)return;if(v.h&&Date.now()-v.h>STALE_MS)return;upsert(s.key,v)}
+    listenFn=function(on){
+      if(on&&!subOn){subOn=true;
+        cA=root.on('child_added',up);cC=root.on('child_changed',up);
+        cR=root.on('child_removed',function(s){drop(s.key)});
+        eA=evRef.on('child_added',onEv)}
+      else if(!on&&subOn){subOn=false;
+        try{root.off('child_added',cA);root.off('child_changed',cC);root.off('child_removed',cR);evRef.off('child_added',eA)}catch(e){}
+        Object.keys(remotes).forEach(drop)}
+    };
+    db.ref('.info/connected').on('value',function(s){
+      var c=!!s.val();tried=true;ST.on=c;window.__net.on=c;
+      if(c){try{me.onDisconnect().remove()}catch(e){}force=true;pub=false}
+      try{window.__netPaint&&window.__netPaint()}catch(e){}
+    });
+    try{initSocial(db)}catch(e){console.warn('online: initSocial',e)}
+    setInterval(send,SEND_MS);
+    requestAnimationFrame(frame);
+    var hk=setInterval(function(){try{hookFire();if(window.fireShot&&window.fireShot.__mp)clearInterval(hk)}catch(e){}},1000);
+  }
+  function connect(){
+    if(started)return;started=true;
+    if(!/^https?:$/.test(location.protocol)){started=false;return}
+    window.__fbLoad(B+'firebase-app-compat.js')
+      .then(function(){return Promise.all([window.__fbLoad(B+'firebase-auth-compat.js'),window.__fbLoad(B+'firebase-database-compat.js')])})
+      .then(function(){
+        if(!firebase.apps.length)firebase.initializeApp(CFGO);
+        wire(firebase.database());
+      })
+      .catch(function(e){started=false;console.warn('online: sem conexão, tentando de novo',e&&e.message);setTimeout(connect,15000)});
+  }
+  if(document.readyState==='complete')setTimeout(connect,800);else window.addEventListener('load',function(){setTimeout(connect,800)});
+})();
 window.MPF={
-  hasCfg:function(){return false},
+  hasCfg:function(){return !!(ST.on&&SOC)},
   online:function(){return ST.on&&!!SOC},
   soc:function(){return (ST.on&&SOC&&!window.__banned)?SOC:null},   /* guilda: usa o mesmo banco social */
   ts:function(){return TS},
@@ -6921,10 +6966,10 @@ function keys(){var a=[];try{for(var i=0;i<localStorage.length;i++){var k=localS
 function snap(){var o={};keys().forEach(function(k){var v=rd(k);if(v!=null&&v.length<200000)o[k]=v});return o}
 function hash(o){var s=JSON.stringify(o),h=5381;for(var i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return String(h)}
 var ready=null,auth=null,db=null,busy=false,applying=false,lastH=rd('mf_gh')||'';
-function load(src){return new Promise(function(res,rej){var s=document.createElement('script');s.src=src;s.onload=res;s.onerror=function(){rej(new Error('net'))};document.head.appendChild(s)})}
+function load(src){if(window.__fbLoad)return window.__fbLoad(src);return new Promise(function(res,rej){var s=document.createElement('script');s.src=src;s.onload=res;s.onerror=function(){rej(new Error('net'))};document.head.appendChild(s)})}
 function sdk(){if(ready)return ready;
  ready=load(BASE+'firebase-app-compat.js').then(function(){return Promise.all([load(BASE+'firebase-auth-compat.js'),load(BASE+'firebase-database-compat.js')])}).then(function(){
-  firebase.initializeApp(CFG);auth=firebase.auth();db=firebase.database();try{auth.useDeviceLanguage()}catch(e){}
+  if(!firebase.apps.length)firebase.initializeApp(CFG);auth=firebase.auth();db=firebase.database();try{auth.useDeviceLanguage()}catch(e){}
  }).catch(function(e){ready=null;throw e});return ready}
 function authReady(){return new Promise(function(r){var o=auth.onAuthStateChanged(function(){o();r()})})}
 function errMsg(e){var c=(e&&e.code)||'',m=(e&&e.message)||'';
@@ -6968,7 +7013,6 @@ window.__googleUser=function(){var u=auth&&auth.currentUser;if(u)return {uid:u.u
  if(rd('mf_local')==='1'&&rd('mc_acck')&&/^local:/.test(rd('mf_gu')||''))return {uid:rd('mf_gu'),email:rd('mf_gu').slice(6),name:'',local:true};return null};
 /* retoma a sessão já salva neste aparelho (e-mail); sem sessão devolve SEM_SESSAO */
 window.__googleLogin=function(){
- if(rd('mf_local')==='1')return Promise.resolve('SEM_SESSAO');
  if(busy)return Promise.resolve('AGUARDE…');
  if(!/^https?:$/.test(location.protocol))return Promise.resolve('ABRA O JOGO PELO ENDEREÇO https:// DO SITE');
  busy=true;
@@ -7005,24 +7049,33 @@ window.__emailUI=function(done){
  var old=document.getElementById('mfEmail');if(old)old.remove();
  var o=document.createElement('div');o.id='mfEmail';
  o.style.cssText='position:fixed;inset:0;z-index:2147483200;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.85);font-family:MFPix,Silkscreen,"Arial Black",Impact,sans-serif;color:#fff;text-transform:uppercase;touch-action:manipulation';
- var B='background:#ffc107;color:#000;border:0;border-bottom:4px solid #c47a00;padding:10px;font:inherit;font-size:16px;cursor:pointer',
+ var B='background:#ffc107;color:#000;border:0;border-bottom:4px solid #c47a00;padding:10px;font:inherit;font-size:16px;cursor:pointer;flex:1',
      I='width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:10px;background:#0b0912;border:3px solid #2c2540;color:#fff;border-radius:0;outline:none;text-transform:none;-webkit-user-select:text;user-select:text';
  o.innerHTML='<div style="background:#16161e;border:4px solid #5c5a6a;padding:16px;width:min(92vw,520px);max-height:94%;overflow:auto;box-sizing:border-box;display:flex;flex-direction:column;gap:9px">'
-  +'<div style="display:flex;justify-content:space-between;align-items:center"><span style="color:#ffc107;font-size:19px">CONTA NO APARELHO</span><button id="em-x" style="'+B+';background:#3a3447;color:#fff;border-bottom-color:#22222c">✕</button></div>'
-  +'<div style="font-size:12px;color:#b4b3c0;line-height:1.4">DIGITE SEU E-MAIL E UMA SENHA. NA PRIMEIRA VEZ A CONTA É CRIADA E SALVA NESTE APARELHO; DEPOIS É SÓ ENTRAR COM O MESMO E-MAIL E SENHA.</div>'
+  +'<div style="display:flex;justify-content:space-between;align-items:center"><span style="color:#ffc107;font-size:19px">CONTA COM E-MAIL</span><button id="em-x" style="'+B+';flex:none;background:#3a3447;color:#fff;border-bottom-color:#22222c">✕</button></div>'
+  +'<div style="font-size:12px;color:#b4b3c0;line-height:1.4">SEU PROGRESSO FICA SALVO NO SERVIDOR ONLINE. EM QUALQUER APARELHO É SÓ ENTRAR COM O MESMO E-MAIL E SENHA.</div>'
   +'<input id="em-e" type="email" autocomplete="email" inputmode="email" placeholder="seu@email.com" style="'+I+'">'
   +'<input id="em-p" type="password" autocomplete="current-password" placeholder="senha (mínimo 6)" style="'+I+'">'
-  +'<button id="em-in" style="'+B+'">SALVAR NO APARELHO</button>'
+  +'<div style="display:flex;gap:8px"><button id="em-in" style="'+B+'">ENTRAR</button><button id="em-new" style="'+B+';background:#3ddc84;border-bottom-color:#1f8f55">CRIAR CONTA</button></div>'
+  +'<button id="em-rs" style="background:none;border:0;color:#8fb8ff;font:inherit;font-size:13px;text-decoration:underline;cursor:pointer;padding:4px">ESQUECI A SENHA</button>'
+  +'<button id="em-loc" style="'+B+';flex:none;display:none;background:#3a3447;color:#fff;border-bottom-color:#22222c;font-size:14px">SALVAR SÓ NESTE APARELHO</button>'
   +'<div id="em-m" style="min-height:1.2em;font-size:13px;color:#ff7a7a;line-height:1.4"></div></div>';
  document.body.appendChild(o);
  ['pointerdown','pointermove','pointerup','touchstart','touchend','click','keydown','keyup','keypress'].forEach(function(n){o.addEventListener(n,function(e){e.stopPropagation()})});
- var q=function(i){return o.querySelector('#'+i)},m=q('em-m');
- function go(){m.style.color='#ffc107';m.textContent='SALVANDO…';
-  window.__emailLocal(q('em-e').value,q('em-p').value).then(function(r){
-   if(r==='ok-linked'){o.remove();if(done)done()}else{m.style.color='#ff7a7a';m.textContent=r}})}
+ var q=function(i){return o.querySelector('#'+i)},m=q('em-m'),ask=0;
+ function res(r){
+  if(r==='ok'){m.style.color='#ffc107';m.textContent='CONTA CARREGADA! ENTRANDO…'}
+  else if(r==='ok-linked'||r==='ok-same'){o.remove();if(done)done()}
+  else if(r==='RESET'){m.style.color='#3ddc84';m.textContent='ENVIAMOS UM LINK PARA REDEFINIR A SENHA NO SEU E-MAIL'}
+  else if(r==='CONFLITO'){ask=1;q('em-in').textContent='CONFIRMAR TROCA';m.style.color='#ffc107';m.textContent='ESSA CONTA JÁ TEM PROGRESSO SALVO. TOQUE EM CONFIRMAR PARA TRAZER ELA (O DESTE APARELHO FICA GUARDADO EM BACKUP).'}
+  else{m.style.color='#ff7a7a';m.textContent=r;if(/^NÃO CONSEGUI CONECTAR|^SEM INTERNET/.test(r)){q('em-loc').style.display='block';m.textContent=r+'. OU TOQUE EM "SALVAR SÓ NESTE APARELHO": A CONTA FICA SÓ AQUI, NÃO VAI PARA O SERVIDOR.'}}}
+ function go(mode){ask=0;q('em-in').textContent='ENTRAR';m.style.color='#ffc107';m.textContent=mode==='reset'?'ENVIANDO…':'CONECTANDO…';window.__emailLogin(q('em-e').value,q('em-p').value,mode).then(res)}
  q('em-x').onclick=function(){o.remove()};
- q('em-in').onclick=go;
- q('em-p').addEventListener('keydown',function(e){if(e.key==='Enter')go()});
+ q('em-in').onclick=function(){if(ask){ask=0;m.textContent='TROCANDO DE CONTA…';window.__googleSwitch().then(res)}else go('in')};
+ q('em-new').onclick=function(){go('new')};
+ q('em-rs').onclick=function(){go('reset')};
+ q('em-loc').onclick=function(){m.style.color='#ffc107';m.textContent='SALVANDO…';window.__emailLocal(q('em-e').value,q('em-p').value).then(function(r){if(r==='ok-linked'){o.remove();if(done)done()}else{m.style.color='#ff7a7a';m.textContent=r}})};
+ q('em-p').addEventListener('keydown',function(e){if(e.key==='Enter')go('in')});
 };
 /* confirmou a troca: guarda o que tinha neste aparelho (mf_bkp) e traz a conta do Google */
 window.__googleSwitch=function(){var u=auth&&auth.currentUser;if(!u)return Promise.resolve('FAÇA O LOGIN DE NOVO');
