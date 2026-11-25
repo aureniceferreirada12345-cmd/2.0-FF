@@ -5543,6 +5543,15 @@ function initSocial(db){
     var to=new Promise(function(res){setTimeout(function(){res('err')},9000)});
     var w=SOC.child('gifts/'+id).push().set({a:1,t:Date.now(),k:'s',s:item,f:me}).then(function(){return 'ok'},function(e){return /permission/i.test((e&&e.message)||e&&e.code||'')?'perm':'err'});
     return Promise.race([w,to]).then(function(r){return r==='ok'?'ok':(r==='perm'?'SEM PERMISSÃO NO SERVIDOR (REGRAS)':'NÃO FOI POSSÍVEL AGORA, TENTE DE NOVO')})};
+  /* PAINEL: manda DIAMANTES para o ID de qualquer jogador (social/gifts/<id>, k:'d'); quem recebe já credita em tempo real */
+  window.__diaSend=function(id,n){
+    if(!SOC||!ST.on)return Promise.resolve('SEM CONEXÃO ONLINE');
+    id=String(id);n=Math.floor(+n);var me=AX()&&AX().AFS?String(AX().AFS.me):'';
+    if(!/^[0-9]{6,10}$/.test(id))return Promise.resolve('ID INVÁLIDO');
+    if(!(n>=1&&n<=1000000))return Promise.resolve('QUANTIDADE INVÁLIDA (1 A 1.000.000)');
+    var to=new Promise(function(res){setTimeout(function(){res('err')},9000)});
+    var w=SOC.child('gifts/'+id).push().set({a:n,t:Date.now(),k:'d',f:me}).then(function(){return 'ok'},function(e){return /permission/i.test((e&&e.message)||e&&e.code||'')?'perm':'err'});
+    return Promise.race([w,to]).then(function(r){return r==='ok'?'ok':(r==='perm'?'SEM PERMISSÃO NO SERVIDOR (REGRAS)':'NÃO FOI POSSÍVEL AGORA, TENTE DE NOVO')})};
   function verApply(ids){
     var V=AX().VER,a=V.slice().sort().join(','),b=ids.slice().sort().join(',');
     if(a===b)return;
@@ -6879,6 +6888,7 @@ function panel(){
  +'<div class="v" id="pnrv"></div><select id="pnrs"></select><input id="pnrp" type="number" inputmode="numeric" placeholder="PONTOS TOTAIS (VAZIO = INÍCIO DA PATENTE)"><button id="pnrk">DEFINIR PATENTE E PONTOS</button>'
  +'<button id="pnall">LIBERAR TODAS AS ROUPAS</button><button id="pnemo">LIBERAR TODOS OS EMOTES</button>'
  +'<div class="v" id="pnme"></div><input id="pni" type="text" inputmode="numeric" placeholder="ID DO JOGADOR (6 A 10 NÚMEROS)"><div class="v" id="pnvtl">SELO: TOQUE EM UM NÍVEL</div><div id="pnvt" style="display:flex;gap:8px;justify-content:space-between"></div><div class="r"><button id="pnvy">DAR VERIFICADO</button><button class="g" id="pnvn">TIRAR</button></div><div class="v" id="pnvl"></div>'
+ +'<div class="v">ENVIAR DIAMANTES PARA UM JOGADOR</div><input id="pndi" type="text" inputmode="numeric" placeholder="ID DO JOGADOR (6 A 10 NÚMEROS)"><input id="pndq" type="number" inputmode="numeric" placeholder="QUANTIDADE DE DIAMANTES"><button id="pndg">ENVIAR DIAMANTES</button>'
  +'<div class="v">ENVIAR SKIN</div><input id="pnsid" type="text" inputmode="numeric" placeholder="ID DO JOGADOR (6 A 10 NÚMEROS)"><div class="v" id="pnsv">TOQUE NA SKIN PARA ESCOLHER</div><div id="pnsg" style="flex:none;height:320px;display:flex;flex-wrap:wrap;align-content:flex-start;gap:6px;overflow-y:auto;box-sizing:border-box;background:#0b0912;border:3px solid #2c2540;padding:6px"></div><button id="pnsk">ENVIAR SKIN</button>'
  +'<div class="v">BANIR JOGADOR</div><input id="pnbi" type="text" inputmode="numeric" placeholder="ID DO JOGADOR (6 A 10 NÚMEROS)"><input id="pnbd" type="number" inputmode="numeric" placeholder="DIAS DE SUSPENSÃO (VAZIO = PERMANENTE)"><input id="pnbp" type="password" placeholder="SENHA DO BAN" autocomplete="off"><div class="r"><button id="pnby">BANIR</button><button class="g" id="pnbn">DESBANIR</button></div>'
  +'<div class="v">GUILDA (ID G123456 OU NOME)</div><input id="pngq" type="text" placeholder="ID OU NOME DA GUILDA"><input id="pngh" type="number" inputmode="numeric" placeholder="HONRA (use - para tirar)"><button id="pngha">ADICIONAR HONRA</button><input id="pngm" type="number" inputmode="numeric" placeholder="MÁXIMO DE MEMBROS (1 A 100)"><button id="pngmx">DEFINIR MEMBROS</button><input id="pngn" type="text" maxlength="140" placeholder="AVISO PARA A GUILDA"><button id="pngnt">ENVIAR AVISO</button><input id="pngr" type="text" inputmode="numeric" placeholder="ID DO JOGADOR A REMOVER DA GUILDA"><button id="pngrm">REMOVER DA GUILDA</button>'
@@ -6910,6 +6920,11 @@ function panel(){
   b.innerHTML=x.ic?'<img src="'+x.ic+'" style="width:100%;height:100%;object-fit:contain;image-rendering:pixelated">':'<span style="font-size:9px;line-height:1.1;word-break:break-word">'+x.n+'</span>';
   b.onclick=function(){skSel=x.id;sg.querySelectorAll('button').forEach(function(q){q.style.borderColor='#2c2540'});b.style.borderColor='#ffc107';o.querySelector('#pnsv').textContent='ESCOLHIDA: '+x.n};
   sg.appendChild(b)})}catch(e){}
+ o.querySelector('#pndg').onclick=function(){var id=o.querySelector('#pndi').value.replace(/\D/g,''),q=Math.floor(+o.querySelector('#pndq').value||0);
+  if(!/^[0-9]{6,10}$/.test(id)){m.textContent='DIGITE O ID DO JOGADOR';return}
+  if(!(q>=1)){m.textContent='DIGITE A QUANTIDADE';return}
+  if(!window.__diaSend){m.textContent='SEM CONEXÃO ONLINE';return}
+  m.textContent='ENVIANDO…';window.__diaSend(id,q).then(function(r){if(r==='ok'){m.textContent=q+' DIAMANTES ENVIADOS PARA '+id+' ✔';o.querySelector('#pndq').value=''}else m.textContent=r})};
  o.querySelector('#pnsk').onclick=function(){var id=o.querySelector('#pnsid').value.replace(/\D/g,'');
   if(!/^[0-9]{6,10}$/.test(id)){m.textContent='DIGITE O ID DO JOGADOR';return}
   if(skSel==null){m.textContent='TOQUE EM UMA SKIN';return}
