@@ -6880,7 +6880,9 @@ function panel(){
  +'<button id="pnall">LIBERAR TODAS AS ROUPAS</button><button id="pnemo">LIBERAR TODOS OS EMOTES</button>'
  +'<div class="v" id="pnme"></div><input id="pni" type="text" inputmode="numeric" placeholder="ID DO JOGADOR (6 A 10 NÚMEROS)"><div class="v" id="pnvtl">SELO: TOQUE EM UM NÍVEL</div><div id="pnvt" style="display:flex;gap:8px;justify-content:space-between"></div><div class="r"><button id="pnvy">DAR VERIFICADO</button><button class="g" id="pnvn">TIRAR</button></div><div class="v" id="pnvl"></div>'
  +'<div class="v">ENVIAR SKIN</div><input id="pnsid" type="text" inputmode="numeric" placeholder="ID DO JOGADOR (6 A 10 NÚMEROS)"><div class="v" id="pnsv">TOQUE NA SKIN PARA ESCOLHER</div><div id="pnsg" style="flex:none;height:320px;display:flex;flex-wrap:wrap;align-content:flex-start;gap:6px;overflow-y:auto;box-sizing:border-box;background:#0b0912;border:3px solid #2c2540;padding:6px"></div><button id="pnsk">ENVIAR SKIN</button>'
- +'<div class="m" id="pnm"></div>');
+ +'<div class="v">BANIR JOGADOR</div><input id="pnbi" type="text" inputmode="numeric" placeholder="ID DO JOGADOR (6 A 10 NÚMEROS)"><input id="pnbd" type="number" inputmode="numeric" placeholder="DIAS DE SUSPENSÃO (VAZIO = PERMANENTE)"><input id="pnbp" type="password" placeholder="SENHA DO BAN" autocomplete="off"><div class="r"><button id="pnby">BANIR</button><button class="g" id="pnbn">DESBANIR</button></div>'
+ +'<div class="v">GUILDA (ID G123456 OU NOME)</div><input id="pngq" type="text" placeholder="ID OU NOME DA GUILDA"><input id="pngh" type="number" inputmode="numeric" placeholder="HONRA (use - para tirar)"><button id="pngha">ADICIONAR HONRA</button><input id="pngm" type="number" inputmode="numeric" placeholder="MÁXIMO DE MEMBROS (1 A 100)"><button id="pngmx">DEFINIR MEMBROS</button><input id="pngn" type="text" maxlength="140" placeholder="AVISO PARA A GUILDA"><button id="pngnt">ENVIAR AVISO</button><input id="pngr" type="text" inputmode="numeric" placeholder="ID DO JOGADOR A REMOVER DA GUILDA"><button id="pngrm">REMOVER DA GUILDA</button>'
++'<div class="m" id="pnm"></div>');
  var m=o.querySelector('#pnm'),v=o.querySelector('#pnv'),vl=o.querySelector('#pnvl');
  var vtier=1,VT_N=['1 · INICIANTE','2 · DESTAQUE','3 · ELITE','4 · LENDÁRIO'];
  try{var vt=o.querySelector('#pnvt');for(var q=1;q<=4;q++)(function(q){var b=document.createElement('button');b.className='g';b.style.cssText='flex:1;padding:6px;border:3px solid '+(q===vtier?'#ffc107':'#2c2540')+';background:#0b0912;display:flex;align-items:center;justify-content:center';
@@ -6913,6 +6915,51 @@ function panel(){
   if(skSel==null){m.textContent='TOQUE EM UMA SKIN';return}
   if(!window.__skinSend){m.textContent='SEM CONEXÃO ONLINE';return}
   var it=skSel;m.textContent='ENVIANDO…';window.__skinSend(id,it).then(function(r){m.textContent=r==='ok'?'SKIN '+String(window.__skinName(it)).toUpperCase()+' ENVIADA PARA '+id+' ✔':r})};
+ /* ===== BAN (senha própria) + GUILDA ===== */
+ var BSALT='ce31f2922da9b382',BHASH='7369dd399bbdea2100664502ab451bb40c3b5c54b0c2d13d094a98f7a5bd6a64',bFails=0,bLock=0;
+ function S0(){try{return window.MPF&&MPF.soc?MPF.soc():null}catch(e){return null}}
+ function nowT(){try{return (window.MPF&&MPF.ts&&MPF.ts())||Date.now()}catch(e){return Date.now()}}
+ function perr(e){return typeof e==='string'?e:(/permission/i.test(String((e&&(e.code||e.message))||e))?'SEM PERMISSÃO NO SERVIDOR (REGRAS)':'NÃO FOI POSSÍVEL AGORA, TENTE DE NOVO')}
+ function bpass(){var now=Date.now();if(now<bLock){m.textContent='AGUARDE '+Math.ceil((bLock-now)/1000)+'S';return false}
+  var p=o.querySelector('#pnbp');if(sha(BSALT+p.value)===BHASH){bFails=0;return true}
+  bFails++;p.value='';if(bFails>=5){bLock=now+60000;bFails=0;m.textContent='MUITAS TENTATIVAS. AGUARDE 60S'}else m.textContent='SENHA DO BAN INCORRETA';return false}
+ function bid(){var id=o.querySelector('#pnbi').value.replace(/\D/g,'');if(!/^[0-9]{6,10}$/.test(id)){m.textContent='ID INVÁLIDO';return ''}return id}
+ o.querySelector('#pnby').onclick=function(){var id=bid();if(!id)return;
+  if(id===myid()){m.textContent='VOCÊ NÃO PODE BANIR A SI MESMO';return}
+  if(!bpass())return;var S=S0();if(!S){m.textContent='SEM CONEXÃO ONLINE';return}
+  var d=Math.floor(+o.querySelector('#pnbd').value||0),perm=!(d>0);d=Math.min(d,3650);
+  var val=perm?1:-(Date.now()+d*864e5);m.textContent='APLICANDO…';
+  S.child('users/'+id+'/n').once('value').then(function(s){return s.val()},function(){return null}).then(function(nm){
+   return S.child('banned/'+id).set(val).then(function(){
+    return S.child('banlast').set({i:id,n:String(nm||'').slice(0,24),p:perm?1:0,d:perm?0:d,t:nowT()}).catch(function(){})})
+  }).then(function(){o.querySelector('#pnbi').value='';o.querySelector('#pnbd').value='';o.querySelector('#pnbp').value='';
+   m.textContent=(perm?'BANIDO ':'SUSPENSO POR '+d+' DIA(S) ')+id+' ✔'}).catch(function(e){m.textContent=perr(e)})};
+ o.querySelector('#pnbn').onclick=function(){var id=bid();if(!id)return;if(!bpass())return;var S=S0();if(!S){m.textContent='SEM CONEXÃO ONLINE';return}
+  S.child('banned/'+id).remove().then(function(){o.querySelector('#pnbi').value='';o.querySelector('#pnbp').value='';m.textContent='DESBANIDO '+id+' ✔'}).catch(function(e){m.textContent=perr(e)})};
+ function gfind(){var S=S0(),q=String(o.querySelector('#pngq').value||'').trim();
+  if(!S)return Promise.reject('SEM CONEXÃO ONLINE');if(!q)return Promise.reject('DIGITE O ID OU O NOME DA GUILDA');
+  if(/^G\d{6}$/i.test(q)){var g=q.toUpperCase();return S.child('guilds/'+g).once('value').then(function(s){if(!s.exists())throw 'GUILDA NÃO ENCONTRADA';return g})}
+  var k=q.toUpperCase().replace(/[^A-Z0-9_ ]/g,'_').slice(0,16)||'_';
+  return S.child('gnames/'+k).once('value').then(function(s){if(!s.exists())throw 'GUILDA NÃO ENCONTRADA';return String(s.val())})}
+ o.querySelector('#pngha').onclick=function(){var n=Math.floor(+o.querySelector('#pngh').value);if(!n){m.textContent='DIGITE A HONRA';return}
+  n=Math.max(-1e9,Math.min(1e9,n));m.textContent='APLICANDO…';
+  gfind().then(function(g){return S0().child('guilds/'+g+'/h').transaction(function(c){return Math.max(0,Math.min(1e9,(+c||0)+n))}).then(function(){return g})})
+  .then(function(g){o.querySelector('#pngh').value='';m.textContent=(n>0?'+':'')+n+' DE HONRA NA GUILDA '+g+' ✔'}).catch(function(e){m.textContent=perr(e)})};
+ o.querySelector('#pngmx').onclick=function(){var n=Math.floor(+o.querySelector('#pngm').value);if(!(n>=1)||n>100){m.textContent='DIGITE DE 1 A 100';return}m.textContent='APLICANDO…';
+  gfind().then(function(g){var S=S0();return S.child('guilds/'+g).once('value').then(function(s){var v=s.val()||{},c=+v.m||0;
+   if(n<c)throw 'A GUILDA JÁ TEM '+c+' MEMBROS';return S.child('guilds/'+g+'/mx').set(n).then(function(){return g})})})
+  .then(function(g){o.querySelector('#pngm').value='';m.textContent='GUILDA '+g+': MÁXIMO '+n+' MEMBROS ✔'}).catch(function(e){m.textContent=perr(e)})};
+ o.querySelector('#pngnt').onclick=function(){var tx=String(o.querySelector('#pngn').value||'').trim().slice(0,140);if(!tx){m.textContent='DIGITE O AVISO';return}m.textContent='ENVIANDO…';
+  gfind().then(function(g){var S=S0(),t=nowT();return Promise.all([S.child('guilds/'+g+'/nt').set(tx),S.child('gchat/'+g).push({n:'SISTEMA',x:('AVISO: '+tx).slice(0,140),t:t}),S.child('glog/'+g).push({x:'AVISO DO ADMIN',t:t})]).then(function(){return g})})
+  .then(function(g){o.querySelector('#pngn').value='';m.textContent='AVISO ENVIADO PARA '+g+' ✔'}).catch(function(e){m.textContent=perr(e)})};
+ o.querySelector('#pngrm').onclick=function(){var id=o.querySelector('#pngr').value.replace(/\D/g,'');if(!/^[0-9]{6,10}$/.test(id)){m.textContent='ID INVÁLIDO';return}
+  var S=S0();if(!S){m.textContent='SEM CONEXÃO ONLINE';return}m.textContent='REMOVENDO…';
+  S.child('gmy/'+id).once('value').then(function(s){var g=s.val();if(!g)throw 'ESSE JOGADOR NÃO ESTÁ EM GUILDA';g=String(g);
+   return S.child('guilds/'+g).once('value').then(function(gs){var v=gs.val()||{};if(String(v.ld)===id)throw 'ELE É O LÍDER DA GUILDA '+g+', NÃO PODE REMOVER';
+    return S.child('gmem/'+g+'/'+id).once('value').then(function(ms){var nm=String((ms.val()||{}).n||id).slice(0,24),u={};u['gmem/'+g+'/'+id]=null;u['gmy/'+id]=null;
+     return S.update(u).then(function(){return S.child('guilds/'+g+'/m').transaction(function(c){return Math.max(0,(+c||1)-1)})}).then(function(){
+      S.child('glog/'+g).push({x:(nm+' FOI REMOVIDO').slice(0,60),t:nowT()}).catch(function(){});return {g:g,n:nm}})})})})
+  .then(function(r){o.querySelector('#pngr').value='';m.textContent=r.n+' REMOVIDO DA GUILDA '+r.g+' ✔'}).catch(function(e){m.textContent=perr(e)})};
  o.querySelector('#pnall').onclick=function(){var n=window.__mfGiveAll?window.__mfGiveAll():-1;m.textContent=n<0?'NÃO FOI POSSÍVEL LIBERAR':(n===0?'VOCÊ JÁ TEM TODAS AS ROUPAS':'+'+n+' ROUPAS LIBERADAS ✔')};
  o.querySelector('#pnemo').onclick=function(){var n=window.__mfGiveEmotes?window.__mfGiveEmotes():-1;m.textContent=n<0?'NÃO FOI POSSÍVEL LIBERAR':(n===0?'VOCÊ JÁ TEM TODOS OS EMOTES':'+'+n+' EMOTES LIBERADOS ✔')};
  o.querySelector('#pnlv').onclick=function(){var n=Math.floor(+o.querySelector('#pnl').value);if(!(n>=1)){m.textContent='DIGITE UM NÍVEL (1 A 100)';return}
@@ -6949,6 +6996,29 @@ setInterval(function(){try{if(bdone())return;var l=window.NLXP?NLXP.l:0;if(l<100
  HUD.diamonds=Math.floor(+HUD.diamonds||0)+3000;try{localStorage.setItem('mc_hud',JSON.stringify(HUD))}catch(e){}try{paintHud()}catch(e){}
  toast('NÍVEL 100! VOCÊ GANHOU 3.000 DIAMANTES')}catch(e){}},1000);
 window.__mfVerApply=vapply;setInterval(vapply,2000);vapply();setTimeout(vapply,1500);setTimeout(vapply,5000);
+})();
+</script>
+<script id="mfBanNews">
+/* AVISO DE BANIMENTO: quando o PAINEL bane alguém, social/banlast = {i,n,p,d,t}. Quem está no LOBBY vê o aviso por alguns segundos. */
+(function(){
+var K='mf_bn_seen',att=0,Q=[],cur=0;
+function sv(){try{return +localStorage.getItem(K)||0}catch(e){return 0}}
+function sm(t){try{localStorage.setItem(K,String(t))}catch(e){}}
+function now(){try{return (window.MPF&&MPF.ts&&MPF.ts())||Date.now()}catch(e){return Date.now()}}
+function lobby(){try{return window.__gst==='lobby'&&!window.__banned&&!document.getElementById('banov')}catch(e){return false}}
+function show(x,done){try{
+ var d=document.createElement('div');d.id='mfBn';
+ d.style.cssText='position:fixed;left:50%;top:7%;transform:translateX(-50%);z-index:2147483000;max-width:90vw;padding:12px 22px;background:rgba(10,8,18,.95);border:4px solid #ff5a5a;color:#fff;font:700 18px MFPix,Silkscreen,"Arial Black",sans-serif;text-align:center;text-transform:uppercase;pointer-events:none;line-height:1.35';
+ var a=document.createElement('div');a.style.cssText='color:#ff5a5a;font-size:15px;margin-bottom:6px';a.textContent='AVISO DE BANIMENTO';
+ var b=document.createElement('div');var nm=(x.n&&String(x.n).trim())?String(x.n).trim():('ID '+x.i);
+ b.textContent='JOGADOR '+nm+(x.p?' FOI BANIDO':' FOI SUSPENSO POR '+x.d+' DIA(S)');
+ d.appendChild(a);d.appendChild(b);document.body.appendChild(d);
+ setTimeout(function(){try{d.remove()}catch(e){}done()},9000)}catch(e){done()}}
+function pump(){if(cur||!Q.length||!lobby())return;var x=Q.shift();if(now()-x.t>180000)return;cur=1;show(x,function(){cur=0})}
+function attach(){if(att)return;var S=window.MPF&&MPF.soc&&MPF.soc();if(!S)return;att=1;
+ S.child('banlast').on('value',function(sn){var v=sn.val();if(!v||!v.t)return;var t=+v.t||0;if(t<=sv())return;sm(t);if(now()-t>180000)return;
+  Q.push({i:String(v.i||''),n:String(v.n||''),p:v.p?1:0,d:+v.d||0,t:t});pump()},function(){})}
+setInterval(function(){attach();pump()},1500);
 })();
 </script>
 <script id="mfGoogle">
