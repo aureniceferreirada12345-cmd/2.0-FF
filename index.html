@@ -1977,7 +1977,7 @@ const VBX='<svg viewBox="0 0 100 100" width="22" height="22" style="position:abs
  };
  var tm=null;
  function load(){if(tm)return tm;tm={};try{var o=JSON.parse(localStorage.getItem('mf_ver_tier')||'{}');if(o&&typeof o==='object')tm=o}catch(e){}return tm}
- window.__verTier=function(id){var t=+load()[String(id||'')];return t>=1&&t<=4?t:3};
+ window.__verTier=function(id){id=String(id||'');var sv=+((window.__vtSrv||{})[id]);if(sv>=1&&sv<=4)return sv;var t=+load()[id];return t>=1&&t<=4?t:3};
  window.__verTierSet=function(id,t){id=String(id);var m=load();if(t>=1&&t<=4&&t!==3)m[id]=t;else delete m[id];try{localStorage.setItem('mf_ver_tier',JSON.stringify(m))}catch(e){}try{window.__verRefresh&&__verRefresh()}catch(e){}};
  window.__vbSvg=function(t,size){return '<svg viewBox="-4 -4 108 108" width="'+size+'" height="'+size+'">'+INNER[t]+'</svg>'};
  window.__vbInner3='';try{var __m=(typeof VBX==='string')?VBX:'';window.__vbInner3=__m.slice(__m.indexOf('>')+1,__m.lastIndexOf('</svg>'))}catch(e){}
@@ -5563,6 +5563,8 @@ function initSocial(db){
     var ids=[];s.forEach(function(c){if(/^\d{4,12}$/.test(c.key)&&(c.val()===true||c.val()===1))ids.push(String(c.key))});
     verApply(ids);
   },function(err){console.warn('verified:',err&&err.message);verApply([])});
+  SOC.child('verTier').on('value',function(s){var m={};s.forEach(function(c){var t=+c.val();if(/^\d{4,12}$/.test(c.key)&&t>=1&&t<=4)m[String(c.key)]=t});
+    window.__vtSrv=m;try{window.__verRefresh&&__verRefresh()}catch(e){}},function(err){console.warn('verTier:',err&&err.message)});
   // dono do ID: impede copiar o ID de um jogador verificado (editando o localStorage) para ganhar o selo
   (function(){var uid=UID();if(!uid)return;
     (window.__accClaim?window.__accClaim(ME,uid):Promise.resolve()).then(function(){
@@ -6903,7 +6905,14 @@ function panel(){
  function vdo(on){var id=o.querySelector('#pni').value.replace(/\D/g,'');if(!/^[0-9]{6,10}$/.test(id)){m.textContent='ID INVÁLIDO';return}
   var a=vget(),i=a.indexOf(id);if(on&&i<0)a.push(id);if(!on&&i>=0)a.splice(i,1);vset(a);try{window.__verTierSet&&__verTierSet(id,on?vtier:0)}catch(e){}if(on){try{if(AFX.VER.indexOf(id)<0)AFX.VER.push(id)}catch(e){}}
   if(!on){try{var V=AFX.VER,k=V.indexOf(id);if(k>=0)V.splice(k,1)}catch(e){}}
-  vapply();vshow();o.querySelector('#pni').value='';m.textContent=(on?'VERIFICADO NÍVEL '+vtier+' ✔ ':'REMOVIDO ')+id}
+  vapply();vshow();o.querySelector('#pni').value='';
+  var SV=null;try{SV=window.MPF&&MPF.soc?MPF.soc():null}catch(e){}
+  if(!SV){m.textContent='SALVO SÓ NESTE APARELHO (SEM CONEXÃO ONLINE) '+id;return}
+  m.textContent='ENVIANDO PARA O SERVIDOR…';
+  var w1=on?SV.child('verified/'+id).set(true):SV.child('verified/'+id).remove();
+  var w2=on?SV.child('verTier/'+id).set(vtier):SV.child('verTier/'+id).remove();
+  Promise.all([w1,w2]).then(function(){m.textContent=(on?'VERIFICADO NÍVEL '+vtier+' ✔ NO SERVIDOR ':'REMOVIDO DO SERVIDOR ')+id})
+  .catch(function(e){m.textContent=/permission/i.test((e&&e.message)||(e&&e.code)||e)?'SEM PERMISSÃO NO SERVIDOR (REGRAS) — OS OUTROS NÃO VÃO VER':'ERRO AO ENVIAR PARA O SERVIDOR, TENTE DE NOVO'})}
  o.querySelector('#pnvy').onclick=function(){vdo(true)};o.querySelector('#pnvn').onclick=function(){vdo(false)};vshow();
  function myid(){try{return String(AFX.AFS.me||'')}catch(e){return ''}}
  function lvl(){try{return window.NLXP?NLXP.l:(PERFIL.nivel||1)}catch(e){return 1}}
