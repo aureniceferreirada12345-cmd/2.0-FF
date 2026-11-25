@@ -3,8 +3,8 @@
 
 <html lang="pt-BR"><head><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#14173F"><script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js")})}</script>
 <meta charset="utf-8">
-<meta name="mf-version" content="3.4.22">
-<meta name="mf-notes" content="Versão 3.4.22: skin Batman no painel · TEMPORADA 2 (patentes do zero · MESTRE 2400 · DESAFIANTE 5000), emote novo no DESAFIANTE, insígnias sem borda branca e placar sincronizado no multiplayer.">
+<meta name="mf-version" content="3.4.23">
+<meta name="mf-notes" content="Versão 3.4.23: enviar emote por ID no painel · skin Batman no painel · TEMPORADA 2 (patentes do zero · MESTRE 2400 · DESAFIANTE 5000), emote novo no DESAFIANTE, insígnias sem borda branca e placar sincronizado no multiplayer.">
 <script id="mfBoot">
 /* Carregador de atualização: abre a versão mais nova já baixada (guardada no aparelho) dentro de uma moldura de tela cheia.
    Se ela não ligar o jogo, desiste dela sozinho e volta para a versão que veio instalada — na hora ou na próxima vez que abrir. */
@@ -2642,6 +2642,10 @@ function bnEquip(){const S=V.cf,o=BN_LIST.find(x=>x.id===S.bnSel);if(!o)return s
 /* ===== EMOTE: LOJA (compra) + COFRE (equipar) — toque no emote = prévia no boneco ===== */
 const EOWN=id=>OWN.includes('e:'+id);
 window.__mfGiveEmotes=function(){var n=0;try{var L=(typeof EMO!=='undefined'&&EMO.list)||(window.EMO&&window.EMO.list)||[];L.forEach(function(o){if(o&&o.id&&OWN.indexOf('e:'+o.id)<0){OWN.push('e:'+o.id);n++}});try{localStorage.setItem('mc_inv',JSON.stringify(OWN))}catch(e){}try{vPaint('cf');vPaint('lj')}catch(e){}}catch(e){return -1}return n};
+/* EMOTE POR ID: lista os emotes e dá UM emote (usado pelo PAINEL e pelo presente k:'e') */
+window.__emoList=function(){try{return((window.EMO&&EMO.list)||[]).map(function(o){return{id:o.id,n:o.n}})}catch(e){return[]}};
+window.__emoName=function(id){try{var o=(window.EMO&&EMO.list||[]).find(function(x){return x.id===id});return o?o.n:''}catch(e){return''}};
+window.__giveEmote=function(id){try{if(!window.__emoName(id))return -1;if(OWN.indexOf('e:'+id)>=0)return 0;OWN.push('e:'+id);try{localStorage.setItem('mc_inv',JSON.stringify(OWN))}catch(e){}try{vPaint('cf');vPaint('lj')}catch(e){}try{paintHud()}catch(e){}return 1}catch(e){return -1}};
 function emMode(on,P){P=P||'cf';const S=V[P];if(S.fo){S.slot=0;S.sel=-1}S.em=!!on;S.fo=false;S.emSel='';if(!on&&window.EMO)EMO.stop();
  nl.querySelectorAll('#'+(P==='cf'?'nlCf':'nlLj')+' .cft').forEach((b,i)=>b.classList.toggle('sel',on?b.dataset.a===P+'em':i===0));
  const s0=$(P+'s0'),tn=[...s0.childNodes].find(n=>n.nodeType===3);if(tn)tn.nodeValue=on?'EMOTE':CF_SL[0];{const s1=$(P+'s1'),t1=s1&&[...s1.childNodes].find(n=>n.nodeType===3);if(t1)t1.nodeValue=CF_SL[1]}
@@ -5546,6 +5550,15 @@ function initSocial(db){
     var to=new Promise(function(res){setTimeout(function(){res('err')},9000)});
     var w=SOC.child('gifts/'+id).push().set({a:1,t:Date.now(),k:'s',s:item,f:me}).then(function(){return 'ok'},function(e){return /permission/i.test((e&&e.message)||e&&e.code||'')?'perm':'err'});
     return Promise.race([w,to]).then(function(r){return r==='ok'?'ok':(r==='perm'?'SEM PERMISSÃO NO SERVIDOR (REGRAS)':'NÃO FOI POSSÍVEL AGORA, TENTE DE NOVO')})};
+  /* PAINEL: manda qualquer EMOTE para o ID de um jogador (social/gifts/<id>, k:'e'); o jogador recebe em tempo real */
+  window.__emoSend=function(id,emo){
+    if(!SOC||!ST.on)return Promise.resolve('SEM CONEXÃO ONLINE');
+    id=String(id);emo=String(emo||'');var me=AX()&&AX().AFS?String(AX().AFS.me):'';
+    if(!/^[0-9]{6,10}$/.test(id))return Promise.resolve('ID INVÁLIDO');
+    if(!window.__emoName||!window.__emoName(emo))return Promise.resolve('EMOTE INVÁLIDO');
+    var to=new Promise(function(res){setTimeout(function(){res('err')},9000)});
+    var w=SOC.child('gifts/'+id).push().set({a:1,t:Date.now(),k:'e',e:emo,f:me}).then(function(){return 'ok'},function(e){return /permission/i.test((e&&e.message)||e&&e.code||'')?'perm':'err'});
+    return Promise.race([w,to]).then(function(r){return r==='ok'?'ok':(r==='perm'?'SEM PERMISSÃO NO SERVIDOR (REGRAS)':'NÃO FOI POSSÍVEL AGORA, TENTE DE NOVO')})};
   /* PAINEL: manda DIAMANTES para o ID de qualquer jogador (social/gifts/<id>, k:'d'); quem recebe já credita em tempo real */
   window.__diaSend=function(id,n){
     if(!SOC||!ST.on)return Promise.resolve('SEM CONEXÃO ONLINE');
@@ -5582,6 +5595,7 @@ function initSocial(db){
   var GD=[];try{GD=JSON.parse(localStorage.getItem('mc_gdone')||'[]')||[]}catch(e){}
   SOC.child('gifts/'+ME).on('child_added',function(s){
     var v=s.val()||{},k=s.key;if(window.__idOk===false)return;
+    if(v.k==='e'){if(GD.indexOf(k)<0&&window.__giveEmote){GD.push(k);if(GD.length>300)GD.shift();try{localStorage.setItem('mc_gdone',JSON.stringify(GD))}catch(e){}var re=window.__giveEmote(String(v.e||''));if(re===1)say2('VOCÊ GANHOU O EMOTE '+String(window.__emoName(v.e)).toUpperCase()+'! VEJA NO COFRE');else if(re===0)say2('VOCÊ JÁ TINHA O EMOTE '+String(window.__emoName(v.e)).toUpperCase())}s.ref.remove();return}
     if(v.k==='s'){if(GD.indexOf(k)<0&&window.__giveSkin){GD.push(k);if(GD.length>300)GD.shift();try{localStorage.setItem('mc_gdone',JSON.stringify(GD))}catch(e){}var r=window.__giveSkin(v.s);if(r===1)say2('VOCÊ GANHOU A SKIN '+String(window.__skinName(v.s)).toUpperCase()+'! VEJA NO COFRE');else if(r===0)say2('VOCÊ JÁ TINHA A SKIN '+String(window.__skinName(v.s)).toUpperCase())}s.ref.remove();return}
     if(GD.indexOf(k)<0){var a=Math.floor(+v.a||0);
       if(a>0&&a<=1000000&&window.__giveDia&&(v.k!=='o'||window.__giveGold)){GD.push(k);if(GD.length>300)GD.shift();try{localStorage.setItem('mc_gdone',JSON.stringify(GD))}catch(e){}if(v.k==='o'&&window.__giveGold){window.__giveGold(a);say2('+'+a+' DE OURO RECEBIDO!')}else{window.__giveDia(a);say2('+'+a+' DIAMANTES RECEBIDOS!')}try{window.__verRefresh&&__verRefresh()}catch(e){}}}
@@ -6895,6 +6909,7 @@ function panel(){
  +'<div class="v" id="pnme"></div><input id="pni" type="text" inputmode="numeric" placeholder="ID DO JOGADOR (6 A 10 NÚMEROS)"><div class="v" id="pnvtl">SELO: TOQUE EM UM NÍVEL</div><div id="pnvt" style="display:flex;gap:8px;justify-content:space-between"></div><div class="r"><button id="pnvy">DAR VERIFICADO</button><button class="g" id="pnvn">TIRAR</button></div><div class="v" id="pnvl"></div>'
  +'<div class="v">ENVIAR DIAMANTES PARA UM JOGADOR</div><input id="pndi" type="text" inputmode="numeric" placeholder="ID DO JOGADOR (6 A 10 NÚMEROS)"><input id="pndq" type="number" inputmode="numeric" placeholder="QUANTIDADE DE DIAMANTES"><button id="pndg">ENVIAR DIAMANTES</button>'
  +'<div class="v">ENVIAR SKIN</div><input id="pnsid" type="text" inputmode="numeric" placeholder="ID DO JOGADOR (6 A 10 NÚMEROS)"><div class="v" id="pnsv">TOQUE NA SKIN PARA ESCOLHER</div><div id="pnsg" style="flex:none;height:320px;display:flex;flex-wrap:wrap;align-content:flex-start;gap:6px;overflow-y:auto;box-sizing:border-box;background:#0b0912;border:3px solid #2c2540;padding:6px"></div><button id="pnsk">ENVIAR SKIN</button>'
+ +'<div class="v">ENVIAR EMOTE</div><input id="pnei" type="text" inputmode="numeric" placeholder="ID DO JOGADOR (6 A 10 NÚMEROS)"><select id="pnes"></select><button id="pnek">ENVIAR EMOTE</button>'
  +'<div class="v">BANIR JOGADOR</div><input id="pnbi" type="text" inputmode="numeric" placeholder="ID DO JOGADOR (6 A 10 NÚMEROS)"><input id="pnbd" type="number" inputmode="numeric" placeholder="DIAS DE SUSPENSÃO (VAZIO = PERMANENTE)"><input id="pnbp" type="password" placeholder="SENHA DO BAN" autocomplete="off"><div class="r"><button id="pnby">BANIR</button><button class="g" id="pnbn">DESBANIR</button></div>'
  +'<div class="v">GUILDA (ID G123456 OU NOME)</div><input id="pngq" type="text" placeholder="ID OU NOME DA GUILDA"><input id="pngh" type="number" inputmode="numeric" placeholder="HONRA (use - para tirar)"><button id="pngha">ADICIONAR HONRA</button><input id="pngm" type="number" inputmode="numeric" placeholder="MÁXIMO DE MEMBROS (1 A 100)"><button id="pngmx">DEFINIR MEMBROS</button><input id="pngn" type="text" maxlength="140" placeholder="AVISO PARA A GUILDA"><button id="pngnt">ENVIAR AVISO</button><input id="pngr" type="text" inputmode="numeric" placeholder="ID DO JOGADOR A REMOVER DA GUILDA"><button id="pngrm">REMOVER DA GUILDA</button>'
 +'<div class="m" id="pnm"></div>');
@@ -6942,7 +6957,13 @@ function panel(){
   if(skSel==null){m.textContent='TOQUE EM UMA SKIN';return}
   if(!window.__skinSend){m.textContent='SEM CONEXÃO ONLINE';return}
   var it=skSel;m.textContent='ENVIANDO…';window.__skinSend(id,it).then(function(r){m.textContent=r==='ok'?'SKIN '+String(window.__skinName(it)).toUpperCase()+' ENVIADA PARA '+id+' ✔':r})};
- /* ===== BAN (senha própria) + GUILDA ===== */
+   try{var es=o.querySelector('#pnes');(window.__emoList?window.__emoList():[]).forEach(function(x){var op=document.createElement('option');op.value=x.id;op.textContent=String(x.n).toUpperCase();es.appendChild(op)})}catch(e){}
+ o.querySelector('#pnek').onclick=function(){var id=o.querySelector('#pnei').value.replace(/\D/g,''),em=o.querySelector('#pnes').value;
+  if(!/^[0-9]{6,10}$/.test(id)){m.textContent='DIGITE O ID DO JOGADOR';return}
+  if(!em){m.textContent='ESCOLHA UM EMOTE';return}
+  if(!window.__emoSend){m.textContent='SEM CONEXÃO ONLINE';return}
+  m.textContent='ENVIANDO…';window.__emoSend(id,em).then(function(r){m.textContent=r==='ok'?'EMOTE '+String(window.__emoName(em)).toUpperCase()+' ENVIADO PARA '+id+' ✔':r})};
+/* ===== BAN (senha própria) + GUILDA ===== */
  var BSALT='ce31f2922da9b382',BHASH='7369dd399bbdea2100664502ab451bb40c3b5c54b0c2d13d094a98f7a5bd6a64',bFails=0,bLock=0;
  function S0(){try{return window.MPF&&MPF.soc?MPF.soc():null}catch(e){return null}}
  function nowT(){try{return (window.MPF&&MPF.ts&&MPF.ts())||Date.now()}catch(e){return Date.now()}}
