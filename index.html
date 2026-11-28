@@ -8,7 +8,7 @@
 (function(){var box,n=0,list=[];function show(m){if(/ServiceWorker|ResizeObserver|Script error\.?$/i.test(m))return;if(list.indexOf(m)>=0)return;list.push(m);if(++n>6)return;
  try{if(!box){box=document.createElement('div');box.style.cssText='position:fixed;left:0;right:0;top:0;z-index:2147483647;background:#b00020;color:#fff;font:12px/1.35 monospace;padding:8px;white-space:pre-wrap;word-break:break-word;max-height:45vh;overflow:auto';box.onclick=function(){box.style.display='none'};(document.body||document.documentElement).appendChild(box)}
  box.style.display='block';box.textContent=(box.textContent?box.textContent+'\n':'ERRO DO JOGO (mande print):\n')+m}catch(e){}}
-window.addEventListener('error',function(e){var f=(e.filename||'').split('/').pop();show((e.message||'erro')+(e.lineno?' [linha '+e.lineno+(f?' '+f:'')+']':''))},true);
+window.addEventListener('error',function(e){if(!e.message)return;var f=(e.filename||'').split('/').pop();show((e.message||'erro')+(e.lineno?' [linha '+e.lineno+(f?' '+f:'')+']':''))},true);
 window.addEventListener('unhandledrejection',function(e){var r=e.reason;show('promessa: '+((r&&(r.message||r.code))||String(r)))});
 window.__mfDiagShow=show})();
 </script>
