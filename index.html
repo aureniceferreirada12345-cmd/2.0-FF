@@ -13,7 +13,7 @@ window.addEventListener('unhandledrejection',function(e){var r=e.reason;show('pr
 window.__mfDiagShow=show})();
 </script>
 <meta name="mf-version" content="3.4.28">
-<meta name="mf-notes" content="Versão 3.4.28: PASSE MUSICAL (temporada 2 do passe, 50 níveis, novo layout, camisa da Argentina e emote do Jamal) com a skin DJ Rosa e o emblema da nota musical · emblema do passe antigo continua no perfil de quem pegou · Versão 3.4.27: skins de arma da Desert removidas, codeguin de skin de arma · enviar emote por ID no painel · skin Batman no painel · TEMPORADA 2 (patentes do zero · MESTRE 2400 · DESAFIANTE 5000), emote novo no DESAFIANTE, insígnias sem borda branca e placar sincronizado no multiplayer.">
+<meta name="mf-notes" content="Versão 3.4.28: emblema do passe 1 guardado na conta · boneco no meio do passe · PASSE MUSICAL (temporada 2 do passe, 50 níveis, novo layout, camisa da Argentina e emote do Jamal) com a skin DJ Rosa e o emblema da nota musical · emblema do passe antigo continua no perfil de quem pegou · Versão 3.4.27: skins de arma da Desert removidas, codeguin de skin de arma · enviar emote por ID no painel · skin Batman no painel · TEMPORADA 2 (patentes do zero · MESTRE 2400 · DESAFIANTE 5000), emote novo no DESAFIANTE, insígnias sem borda branca e placar sincronizado no multiplayer.">
 <script id="mfBoot">
 /* Carregador de atualização: abre a versão mais nova já baixada (guardada no aparelho) dentro de uma moldura de tela cheia.
    Se ela não ligar o jogo, desiste dela sozinho e volta para a versão que veio instalada — na hora ou na próxima vez que abrir. */
@@ -2253,6 +2253,12 @@ CAT[0].push({id:40,n:'Batman',p:0,r:4,nos:1});
 /* SKIN DJ ROSA (id 43): conjunto, fora da loja · só no PASSE MUSICAL (nível final, trilha ELITE) */
 SKINS[43]='data:image/png;base64,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';
 CAT[0].push({id:43,n:'DJ Rosa',p:0,r:4,nos:1,cj:1});
+/* SKIN LUANA (id 44): conjunto, fora da loja · GIRO TOP (2%, garantida ao gastar 7.000 diamantes) e PAINEL (ENVIAR SKIN / CODEGUIN) */
+SKINS[44]='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAFJUlEQVR4nO1bTWhURxz/TbI5tFmkpFSXTY3QEk3jIZAugbWgp/QQCpX2VCmV4EmEhkoxitBDDtVCW1kv8VKEIrnYlPaSg/EkxEC6CD0YYoKwJnVJLUklvEXIUl8PcR7z5s3HmzfvI9H8IMz85z8z/4/9z/cLgQar5etuvtQJp/rYK2Pp1tE1Zfu3jn9NdDJM5bM6FGaHrfpvCVPJqT5GvtTpowFgrr5kIzs8Lh3xyadlcSCUA4Ato1mD86VODBS7Y1EirHwqN06EcgAVyhrMh2SScAZvBuQ6gzdjicBIQyC10GcgkhlHBBoNASD90KdgZcY5DLQO4D3Phn5akcAbHOfw0zpgoNgtNHSuvpRaJCTpdCJbZ1mo1uGwbVR0lvJbAP0SI+KLhMv4vPC5+pKPzlK+bwioPNo6uqbd/cna8wbIho5KfmF2mFC+bPcXRT5ZLV93pVJf4JP6FQDA75UvAAAfj/wMAPi1+JWuqRS6EGYhMziM7jr5vghgJxg2f+v+XcycmfDomTMTuHX/rradqkxkPF9vrr6k3OsXZoeJqI2JfJ8DBordaB1dE4b4D1e+FeYpaDtReLNlqlmc1osy09M2pvIDy+B/370JAChXOrzKz25fw8nxfqzXV7BeX8HJ8X48u33N67Bc6fC1FSlG8yJleKXo0ru4WZPZ62FxsyZckkV9i+QHHMD++qwTAKCjuB8dxf2+DqjxfFteQWoYq9TiZg03atPCXy2M8aq6A8Vu3KhNa+UHxtc/v33vm1g2zrf5+O8ujCjP31MHLyonpkMte1Vsbf+NszO+/t2xPh8/n88b3Q+EPgu8rNh1QNYKZA1Cx/x6fcU3wfGQ8f8492+g7Oi9CyDf/Okrc8f6cKf/krBvVf1jHw0BAFanqigMlaT6yfjtP36gnBMIP+mZ4vU7ZR89OHna2yRRo+hE9eHhI5j+dNy4vttsgLS1e0ZSmkLF1zkgniFw4sDWHwOy8FSYl9ZnIoCPBmpcVFqFXKhaKrCGnDgATG5l3Z43QPDIy2vrj/UFIgBAwBCWFhmp4/OwdoDPOJ7HrdFR6u+53AQQfY7CcWkTAC+GAN3isp2Z0GlAZXwYvgy5jfNtyOEdAMAGLTSgXxNEGVl4GvilA/OAQX3qbGqkKa1CTrW0hIHVEhIC7395NdH+ieM4Vjb8XfopLl2E2Fc9ZdVedzbI0fBjw5AtA6DkF4ZK3vqbRJq0g3PUIDaV5ZVre0KgEdDb24v5+flAnkLKz48o+ydTBy+6h1r24sHzJ95RleYfPH8CAFDxj967EI+lMgUtI7S99LZ6K8wXNM7OuGwI6s7naYO/D9BtdXV45U+Duw7IWoGskePHPA+ez6dJzxH8mDflp3McThhus2FFq7AjHJDkfYD1Vtj0GtoUD3sqVvptt2V8F9sN5FUPMev7ACzEo4gMXV1dVj/Q8vKy+iyw3SfBpPUjjuO4/InLJMXEo0TvA2yhG6I5/qxvmiaNfdVTgfO/Ea27D3jYU3HZ871pmvR9ABC8EzBJU78PsP2+wPb93/S+YEdshZPErgOyViBrEN15X5favt3R5/Wo7/+2iC0CbN7u3GbDt+6Lzvc6flR6WwwB2/O+DW29FaYfTEYFv0ymDet9vO0nNhRR5xDb/0uMZQjE8X1BUu//OljfB9hiz+Wm1fu/bQQQ3bVy0njvl8+yFG8/Ce50eM/jke8DoH6d1fFXP59M22YfSKP6V6YRQJ0S+f3fkra+DwDU3w/o+McmTltFkG36P69U/eKUPvVPAAAAAElFTkSuQmCC';
+CAT[0].push({id:44,n:'Luana',p:0,r:4,nos:1,cj:1});
+/* SKIN JUAN (id 45): conjunto, fora da loja · só chega pelo PAINEL (ENVIAR SKIN / CODEGUIN) */
+SKINS[45]='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAByklEQVR4nO2aMU7EMBBFbZRUSYEoKTgCdHAEJKgQZwFxBMQ9oFvRIbG3gCNQUCKKTeWVQoGQWMf22GubifF/XTZxdvzj+R5pLAXB/t7u6Lr/eHPmHH9y/SCp/+BkhzsAbiAAdwDcQADuALiBANwBcCOpfT437x+frHVC9Sug8XnIVu1d3D4lDYYDcgW4Sl2qDC4BrxQ4vroX53dL63XJTEww9quGpgW3CXp5gBBCvLy+bVwfHR4kD4YDbwH+y4R1Jsuv6zpnXTAMg3PJUuMpYt9Pjdepvg6AANwBcCNjc3bVtsbfe6W8nqPQ3xMK5Qneu4ANU4C+osyBaAFM9EpNRJjj5IXIJIAQ6SZsEnIhv1f15TiSqUXtidEe4MNPkByrILsHmNjW8DjIsg3qX7pXCh6wLcV5wKptrZN33csF6QGx+WqrA1IVQrlpUn8RUw3w+14o+rue1+uN69PGncVUCkR7gC1AkwgLKcmAdUjRZmquAAAAAAAAAAAAmC/Jj6fkPl8Q2v+nqL47DAG4A+AmOp/+orfoItYTql8B1QuQrTfoS+7eHwU8IFUgpVK9APCAyPHFe0Dy7nAo3EdnshyUDCF3/5+C3QO4+/9f3CGzNoaQOIUAAAAASUVORK5CYII=';
+CAT[0].push({id:45,n:'Juan',p:0,r:4,nos:1,cj:1});
 /* SKIN FEITICEIRO BRANCO (id 42): skin normal (NÃO é conjunto → as peças dela vão pro cofre e dá pra misturar) · na LOJA por 900 diamantes */
 SKINS[42]='data:image/png;base64,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';
 CAT[0].push({id:42,n:'Feiticeiro Branco',p:900,r:4});
@@ -2610,11 +2616,10 @@ applyEq();
 vPaint('cf');vPaint('lj');window.GAB={CAT,OWN,EQ,SKINS,mixSkin,compose,baseSrc,code:skinCode,partsOf,mkFig,vPaint,applyEq,say,get paint(){return typeof paint==='function'?paint:null},rk:()=>({i:MY.i,p:MY.p})};
 
 /* ===== SORTE ROYALE: 3 abas — SORTE ROYALE (1ª) · DIAMANTES ROYALE (evento, acaba em 40 dias) · OURO ROYALE (em breve) ===== */
-const SR_COSTO=300,SR_COST=50,SR_COSTD=50,SR_COSTT=100,SR_DUP=20,SR_DUPG=100,SR_END=new Date('2026-12-27T00:00:00-03:00').getTime();   /* fim do Diamantes Royale = 17/11/2026 + 40 dias */
+const SR_COSTO=300,SR_COST=50,SR_COSTD=50,SR_COSTT=100,SR_DUP=20,SR_DUPG=100,SR_PITY=7000,SR_END=new Date('2026-12-27T00:00:00-03:00').getTime();   /* fim do Diamantes Royale = 17/11/2026 + 40 dias */
 const SR_TABS=[{k:'s',n:'SORTE ROYALE'},{k:'d',n:'DIAMANTES ROYALE'},{k:'o',n:'OURO ROYALE'},{k:'n',n:'NOEL ROYALE'},{k:'t',n:'GIRO TOP'}];
-const SR_PR=[
- {k:'s107',t:'s',id:107,p:11},{k:'s108',t:'s',id:108,p:11},{k:'s110',t:'s',id:110,p:11},
- {k:'d50',t:'d',a:50,p:3,n:'50 DIAMANTES',r:3},{k:'d20',t:'d',a:20,p:15,n:'20 DIAMANTES',r:2},{k:'d10',t:'d',a:10,p:49,n:'10 DIAMANTES',r:2}];
+const SR_PR=[   /* SORTE ROYALE (soma = 100%) · calças angelicais + peitoral saíram do sorteio (quem já tem continua com elas no cofre) · aqui entram as novas */
+ {k:'d50',t:'d',a:50,p:5,n:'50 DIAMANTES',r:3},{k:'d20',t:'d',a:20,p:22,n:'20 DIAMANTES',r:2},{k:'d10',t:'d',a:10,p:73,n:'10 DIAMANTES',r:2}];
 const SR_PRD=[   /* DIAMANTES ROYALE (soma = 100%) · Dino Verde saiu do sorteio (quem já tem continua com ele no cofre) */
  {k:'x39',t:'s',id:39,p:5},{k:'x100',t:'d',a:100,p:4,n:'100 DIAMANTES',r:3},{k:'x50',t:'d',a:50,p:12,n:'50 DIAMANTES',r:3},
  {k:'x20',t:'d',a:20,p:27,n:'20 DIAMANTES',r:2},{k:'x10',t:'d',a:10,p:30,n:'10 DIAMANTES',r:2},
@@ -2629,9 +2634,9 @@ const SR_PRN=[   /* NOEL ROYALE (soma = 100%) · 300 de ouro por giro · skin Pa
  {k:'n100',t:'g',a:100,p:10,n:'100 OURO',r:3},{k:'n50',t:'g',a:50,p:15,n:'50 OURO',r:2},
  {k:'n30',t:'g',a:30,p:10,n:'30 OURO',r:2},{k:'n20',t:'g',a:20,p:5,n:'20 OURO',r:1}];
 const srGold=T=>T==='o'||T==='n';   /* royales pagos com ouro */
-const SR_PRT=[   /* GIRO TOP (soma = 100%) · 100 diamantes por giro · cada skin palhaço (conjunto) tem 2% */
- {k:'t30',t:'s',id:30,p:2},{k:'t31',t:'s',id:31,p:2},{k:'t32',t:'s',id:32,p:2},{k:'t33',t:'s',id:33,p:2},
- {k:'t50',t:'d',a:50,p:3,n:'50 DIAMANTES',r:3},{k:'t20',t:'d',a:20,p:15,n:'20 DIAMANTES',r:2},{k:'t10',t:'d',a:10,p:74,n:'10 DIAMANTES',r:2}];
+const SR_PRT=[   /* GIRO TOP (soma = 100%) · 100 diamantes por giro · skin Luana 2% (garantida ao gastar 7.000 diamantes aqui) · palhaços saíram (quem já tem continua com eles no cofre) */
+ {k:'t44',t:'s',id:44,p:2},
+ {k:'t50',t:'d',a:50,p:3,n:'50 DIAMANTES',r:3},{k:'t20',t:'d',a:20,p:15,n:'20 DIAMANTES',r:2},{k:'t10',t:'d',a:10,p:80,n:'10 DIAMANTES',r:2}];
 [SR_PR,SR_PRD,SR_PRT,SR_PRO,SR_PRN].forEach(L=>{L.forEach(o=>{if(o.t==='s'){const it=ITEM(o.id);o.n=it.n.toUpperCase();o.r=it.r}else if(o.t==='e'){const em=window.EMO&&EMO.list.find(x=>x.id===o.id);o.n='EMOTE '+(em?em.n:o.id.toUpperCase());o.r=em?em.r:4}});if(L.reduce((a,o)=>a+o.p,0)!==100)console.error('SORTE ROYALE: soma != 100')});
 let SR_SEL='',SRB=false,SR_TAB='s',SR_RUN=false;
 const srBase=()=>SR_TAB==='d'?SR_PRD:SR_TAB==='s'?SR_PR:SR_TAB==='t'?SR_PRT:SR_TAB==='o'?SR_PRO:SR_TAB==='n'?SR_PRN:[];
@@ -2748,7 +2753,7 @@ function srPaint(){const g=$('srGr');if(!g||SR_RUN)return;   /* girando: não re
  try{bnPaint()}catch(e){}
  {const big=$('srBig'),gd=!!o&&(o.t==='g'||o.t==='d'||o.t==='f'),d3=!!o&&(o.t==='b'||o.t==='a'); window.NLHIDEME=(gd||d3)&&$('nlSr').style.display==='block';
   big.style.display=(gd||d3)?'flex':'none';big.innerHTML=gd?`<div style="transform:scale(${o.t==='g'?13:11});display:flex">${o.t==='g'?I.gold:o.t==='f'?I.fic:I.dia}</div>`:d3?sr3d(o,1):''}
- $('srTp').innerHTML=(T==='n'?'CADA GIRO CUSTA '+cost+' DE OURO'+tip:T==='o'?((free?'SEU PRIMEIRO GIRO É GRÁTIS! · DEPOIS ':'CADA GIRO CUSTA ')+(free?cost+' DE OURO':cost+' DE OURO · PRÓXIMO GRÁTIS EM '+bnClock(srFoLeft(st)))+tip):T==='d'?(open?(free?'SEU PRIMEIRO GIRO É GRÁTIS! · ':'CADA GIRO CUSTA '+cost+' DIAMANTES · ')+srTabTxt(days)+tip:'ESTE EVENTO JÁ ACABOU'):(free?'SEU PRIMEIRO GIRO É GRÁTIS! · DEPOIS '+cost+' DIAMANTES':'CADA GIRO CUSTA '+cost+' DIAMANTES')+tip)}
+ $('srTp').innerHTML=(T==='n'?'CADA GIRO CUSTA '+cost+' DE OURO'+tip:T==='o'?((free?'SEU PRIMEIRO GIRO É GRÁTIS! · DEPOIS ':'CADA GIRO CUSTA ')+(free?cost+' DE OURO':cost+' DE OURO · PRÓXIMO GRÁTIS EM '+bnClock(srFoLeft(st)))+tip):T==='d'?(open?(free?'SEU PRIMEIRO GIRO É GRÁTIS! · ':'CADA GIRO CUSTA '+cost+' DIAMANTES · ')+srTabTxt(days)+tip:'ESTE EVENTO JÁ ACABOU'):(free?'SEU PRIMEIRO GIRO É GRÁTIS! · DEPOIS '+cost+' DIAMANTES':'CADA GIRO CUSTA '+cost+' DIAMANTES'+(T==='t'&&!OWN.includes(44)?'<br><span style="font-size:20px;color:#ff9be0">LUANA GARANTIDA AO GASTAR '+SR_PITY+' · VOCÊ GASTOU '+Math.min(SR_PITY,st.tg|0)+'</span>':''))+tip)}
 function srPrev(id){const it=ITEM(id);if(!it)return;if(it.k){const p=Object.assign({},partsOf());p[it.k]=it.ps;showCode(skinCode(EQ[0],p))}else showCode(skinCode(id,{}))}
 function srSel(k){if(SRB)return;SR_SEL=k;const o=srList().find(x=>x.k===k);srPaint();arHandEnd();if(o&&o.t==='s')srPrev(o.id);else{applyEq();try{if(window.EMO){EMO.stop();if(o&&o.t==='e')EMO.play(o.id)}}catch(e){}if(o&&o.t==='w')arHand(o.id)}}
 function srTab(t){if(SRB)return;SR_TAB=t;SR_SEL='';arHandEnd();srPaint();applyEq()}
@@ -2772,7 +2777,11 @@ function srRun(T,st,L,free,cost){   /* cobra, sorteia e entrega no mesmo instant
   if(HUD[K]!==bal-cost)HUD[K]=bal-cost;
   try{say('-'+cost+(srGold(T)?' OURO':' DIAMANTES'))}catch(e){}}
  st.n=(st.n|0)+1;if(T==='d')st.dn=(st.dn|0)+1;
- const o=srRoll(L);let dup=false;const BK=srGold(T)?'gold':'diamonds',antes=Math.floor(+HUD[BK]||0),dAntes=Math.floor(+HUD.diamonds||0),oAntes=Math.floor(+HUD.gold||0);
+ let o=srRoll(L);let dup=false;
+  if(T==='t'&&!free){st.tg=(st.tg|0)+cost;   /* GIRO TOP: quem gastar 7.000 diamantes aqui leva a Luana (se ainda não tem) */
+   if(!OWN.includes(44)&&st.tg>=SR_PITY){const g44=L.find(x=>x.id===44);if(g44)o=g44}
+   if(o.id===44)st.tg=0}
+  const BK=srGold(T)?'gold':'diamonds',antes=Math.floor(+HUD[BK]||0),dAntes=Math.floor(+HUD.diamonds||0),oAntes=Math.floor(+HUD.gold||0);
  if(o.t==='g')HUD.gold=Math.floor(+HUD.gold||0)+(Math.floor(+o.a)||0);else if(o.t==='d'){const gain=Math.floor(+o.a)||0;window.__diaLegit&&window.__diaLegit(gain);HUD.diamonds=Math.floor(+HUD.diamonds||0)+gain}else if(o.t==='f')HUD.fichas=Math.floor(+HUD.fichas||0)+o.a;else if(o.t==='e'){if(EOWN(o.id)){dup=true;srDupPay(T)}else OWN.push('e:'+o.id)}else if(o.t==='w'){if(window.__wskGive(o.id)!==1){dup=true;srDupPay(T)}}else if(o.t==='a'){if(OWN.includes('ft:'+o.id)){dup=true;srDupPay(T)}else OWN.push('ft:'+o.id)}else if(o.t==='b'){if(OWN.includes('bn:'+o.id)){dup=true;srDupPay(T)}else OWN.push('bn:'+o.id)}else if(OWN.includes(o.id)){dup=true;srDupPay(T)}else OWN.push(o.id);
  if(T==='o'&&free)SR_MEM.fo=st.fo;try{localStorage.setItem('mc_sr',JSON.stringify(st))}catch(e){}srSave();try{paint()}catch(e){}const dGanho=Math.floor(+HUD.diamonds||0)-dAntes,oGanho=Math.floor(+HUD.gold||0)-oAntes;try{srPaintBal(antes)}catch(e){}   /* Cofre/Loja são redesenhados depois do giro, para não travar a animação */
  try{if(window.MPF&&MPF.sorteHist)MPF.sorteHist({p:o.k,c:free?0:cost,b:T})}catch(e){}   /* histórico: social/sorte/<id>/h */
@@ -3274,7 +3283,8 @@ function pfPaint(){const d=pfData(),k=d.rk,C=$('pfC');{const sm=$('pfTbS');if(sm
  nl.querySelectorAll('#nlPf .pft').forEach((b,i)=>b.classList.toggle('sel',i===PF.tab));
  $('pfTb1').style.display=d.me?'flex':'none';
  if(PF.tab===1){const fr=nameFree(),low=!fr&&HUD.diamonds<100;
-  C.innerHTML=`<div class="a tx" style="left:40px;top:40px;font-size:50px;color:#ffc107">EDITAR NOME</div>
+   {const oi=$('pfIn'),kk=d.n+'|'+fr+'|'+low;if(oi&&C.contains(oi)&&C.getAttribute('data-nk')===kk)return;C.setAttribute('data-nk',kk)}   /* já está na tela: NÃO refaz (o jogo repintava a cada 2 s e apagava o que o jogador digitava) */
+   C.innerHTML=`<div class="a tx" style="left:40px;top:40px;font-size:50px;color:#ffc107">EDITAR NOME</div>
 <div class="a tx" style="left:40px;top:140px;font-size:30px;color:#b4b3c0">NOME ATUAL</div>
 <div class="a tx" style="left:40px;top:190px;font-size:64px">${pfEsc(d.n)}</div>
 <div class="a tx" style="left:40px;top:320px;font-size:30px;color:#b4b3c0">NOVO NOME</div>
@@ -3282,9 +3292,9 @@ function pfPaint(){const d=pfData(),k=d.rk,C=$('pfC');{const sm=$('pfTbS');if(sm
 <div class="a tx" style="left:40px;top:480px;font-size:24px;color:#8d8c99">3 A 12 LETRAS, NÚMEROS OU _</div>
 <div class="a" style="left:40px;top:555px;display:flex;align-items:center"><span style="display:flex;margin-right:16px">${I.dia}</span><span class="tx" style="font-size:64px;${fr?'color:#3ddc84':''}">${fr?'0':'100'}</span></div>
 <div class="a tx" style="left:40px;top:650px;font-size:28px;color:${low?'#ff6a6a':'#b4b3c0'}">${fr?'SUA PRIMEIRA TROCA DE NOME É GRÁTIS':'SEUS DIAMANTES: '+HUD.diamonds}</div>
-<button class="rby a" data-a="pfn" style="left:40px;top:725px;padding:0 60px">CONFIRMAR</button>`;return}
+<button class="rby a" data-a="pfn" style="left:40px;top:725px;padding:0 60px">CONFIRMAR</button>`;{const ni=$('pfIn');if(ni)['keydown','keyup','keypress'].forEach(k=>ni.addEventListener(k,e=>e.stopPropagation()))}return}
  const av=d.bot?`<div style="width:138px;height:138px;overflow:hidden"><div style="transform:scale(2.03);transform-origin:0 0;display:flex">${botHead}</div></div>`:head(d.h,d.s,138,d.av),pct=Math.min(100,Math.max(0,(d.p-d.b)/Math.max(1,d.max-d.b)*100)),lkOK=!d.bot&&/^\d{6,10}$/.test(String(d.id)),lk=(lkOK&&window.__lkGet)?window.__lkGet(d.id):{n:0,me:false};
- C.innerHTML=`<div class="a rkp" style="left:20px;top:20px;width:720px;height:814px">
+ C.removeAttribute('data-nk');C.innerHTML=`<div class="a rkp" style="left:20px;top:20px;width:720px;height:814px">
 ${pfBn(d)}<div class="a" style="left:30px;top:30px;width:150px;height:150px;border:6px solid #ffc107;background:#ffc107">${av}${d.v?pfVB(52,1,d.id):''}</div>
 <div class="a tx" style="left:210px;top:44px;width:480px;height:52px;overflow:hidden;font-size:46px">${pfEsc(d.n)}</div>
 <div class="a tx" style="left:210px;top:108px;font-size:30px;color:#c9c8d0">NV. ${d.lv}${d.xp!=null?' · '+d.xp+'/100 XP':''}</div>
@@ -3296,7 +3306,7 @@ ${lkOK?`<div class="a pfb" style="left:450px;top:355px;width:240px;height:80px">
 <div class="a tx" style="left:30px;top:30px;font-size:48px;color:#ffc107">PASSE</div>
 <div class="a tx" style="left:30px;top:98px;font-size:26px;color:#b4b3c0">${d.me?(psPrem()?'ELITE ATIVO':'PASSE GRÁTIS'):'TEMPORADA 2'}</div>
 <div class="a" style="right:34px;top:6px;display:flex;flex-direction:column;align-items:center;gap:0">${psEmb2(92,d.me&&psPrem())}<span class="tx" style="font-size:40px;margin-top:2px;color:${d.me&&psPrem()?'#ffe600':'#c9ced6'}">${d.me?psLv():0}</span></div>
-${d.me&&psOld()?`<div class="a" style="right:150px;top:18px;display:flex;flex-direction:column;align-items:center">${psEmb(70,psOld().p)}<span class="tx" style="font-size:20px;margin-top:4px;color:#b4b3c0">T1 · ${psOld().lv}</span></div>`:''}
+${d.me&&psOld()?`<div class="a" style="right:150px;top:6px;display:flex;flex-direction:column;align-items:center">${psEmb(92,psOld().p)}<span class="tx" style="font-size:40px;margin-top:2px;color:${psOld().p?'#ffc107':'#c9ced6'}">${psOld().lv}</span></div>`:''}
 <div class="a" style="left:30px;top:150px;width:600px;height:20px;background:#32313c"><div style="width:${d.me?psPct():0}%;height:100%;background:#ffe600"></div></div>
 <div class="a" style="left:0;right:0;bottom:0;height:12px;background:repeating-linear-gradient(135deg,#ffc107 0 8px,#222 8px 16px)"></div></div>
 ${pfReqBtn(d,lkOK)||`<div class="a tx" style="left:30px;top:710px;font-size:30px;color:#ffc107">MARCOS RECENTES</div>
@@ -3601,7 +3611,9 @@ function psRw(l,tr){
  return l%5===0?{t:'d',a:20+l}:{t:'g',a:100+l*8}}
 const psHas=(tr,l)=>!!psRw(l,tr);
 /* PASSE ANTIGO (temporada 1): guardado em 'mf_pass'. Quem comprou o Elite ou resgatou algo mantém o EMBLEMA antigo no perfil; quem não pegou fica só com o do passe novo */
-function psOld(){try{const q=JSON.parse(localStorage.getItem(PS_OLD)||'null');if(!q||typeof q!=='object')return null;const c=q.c&&typeof q.c==='object'?Object.keys(q.c).filter(k=>q.c[k]).length:0;if(!q.p&&!c)return null;return{lv:Math.floor((+q.x||0)/200),p:q.p?1:0}}catch(e){return null}}
+function psOld(){try{let x=0,p=0,c=0;[PS_OLD,'mf_emb1'].forEach(k=>{const q=JSON.parse(localStorage.getItem(k)||'null');if(q&&typeof q==='object'){x=Math.max(x,Math.floor(+q.x)||0);if(q.p)p=1;if(q.c&&typeof q.c==='object')c+=Object.keys(q.c).filter(z=>q.c[z]).length}});if(!x&&!p&&!c)return null;return{lv:Math.floor(x/200),p:p}}catch(e){return null}}
+/* guarda uma cópia do passe 1 (emblema + nível) numa chave própria que sobe pra conta e nunca é zerada */
+(function(){try{const a=localStorage.getItem(PS_OLD);if(a&&!localStorage.getItem('mf_emb1'))localStorage.setItem('mf_emb1',a)}catch(e){}})();
 const psEm=id=>EMO.list.find(x=>x.id===id);
 const psTx=r=>r.x?psTx0(r)+' + '+psTx0(r.x):psTx0(r),psTx0=r=>r.t==='d'?'+'+r.a+' DIAMANTES':r.t==='g'?'+'+r.a+' OURO':r.t==='s'?ITEM(r.id).n.toUpperCase():'EMOTE '+psEm(r.id).n;
 function psGive(r){if(r.x)psGive(r.x);try{
@@ -3628,8 +3640,8 @@ function psGain(n){const l0=psLv();PS.x+=n;psSave();say('+'+n+' XP DO PASSE'+(ps
 function psEmb(h,gold){const a=gold?['#ffe26a','#f0a800','#8a5a00']:['#f1f3f6','#b4bac4','#5d646e'],id='pe'+(gold?'g':'s');let s='';
  for(let i=0;i<10;i++){const R=i%2?5.5:13,q=(i*36-90)*Math.PI/180;s+=(R*Math.cos(q)).toFixed(1)+','+(R*Math.sin(q)).toFixed(1)+' '}
  return `<svg viewBox="-56 -56 112 112" width="${h}" height="${h}" style="display:block"><defs><linearGradient id="${id}" x1="0" y1="-1" x2="0" y2="1"><stop offset="0" stop-color="${a[0]}"/><stop offset="1" stop-color="${a[1]}"/></linearGradient></defs>${[0,1,2,3,4].map(i=>`<path transform="rotate(${i*72})" d="M0 0C-20-8-30-34-14-50Q-7-56 0-46Q7-56 14-50C30-34 20-8 0 0Z" fill="url(#${id})" stroke="${a[2]}" stroke-width="2.4" stroke-linejoin="round"/>`).join('')}<circle r="17" fill="${a[1]}"/><polygon points="${s}" fill="#2b1517" stroke="${a[0]}" stroke-width="1.6" stroke-linejoin="round"/></svg>`}
-function psEmb2(h,on){const c=on?'#ffe600':'#c9ced6',e=on?'#8a6a00':'#5d646e',id='pn'+(on?'g':'s');
- return `<svg viewBox="-56 -56 112 112" width="${h}" height="${h}" style="display:block"><defs><linearGradient id="${id}" x1="0" y1="-1" x2="0" y2="1"><stop offset="0" stop-color="${on?'#fff27a':'#f1f3f6'}"/><stop offset="1" stop-color="${on?'#ffb800':'#b4bac4'}"/></linearGradient></defs><polygon points="0,-54 47,-27 47,27 0,54 -47,27 -47,-27" fill="#1d1426" stroke="${c}" stroke-width="5" stroke-linejoin="round"/><g transform="translate(0 6)" fill="url(#${id})" stroke="${e}" stroke-width="2" stroke-linejoin="round"><ellipse cx="-17" cy="24" rx="11" ry="8.5" transform="rotate(-20 -17 24)"/><ellipse cx="23" cy="16" rx="11" ry="8.5" transform="rotate(-20 23 16)"/><rect x="-10" y="-26" width="6" height="50"/><rect x="30" y="-34" width="6" height="50"/><polygon points="-10,-32 36,-42 36,-26 -10,-16"/></g></svg>`}
+function psEmb2(h,on){const a=on?['#ffb3df','#e6399b','#7a1250']:['#f1f3f6','#b4bac4','#5d646e'],n=on?'#ffe600':'#c9ced6',id='pn'+(on?'g':'s');
+ return `<svg viewBox="-56 -56 112 112" width="${h}" height="${h}" style="display:block"><defs><linearGradient id="${id}" x1="0" y1="-1" x2="0" y2="1"><stop offset="0" stop-color="${a[0]}"/><stop offset="1" stop-color="${a[1]}"/></linearGradient></defs>${[0,1,2,3,4].map(i=>`<path transform="rotate(${i*72})" d="M0 0C-20-8-30-34-14-50Q-7-56 0-46Q7-56 14-50C30-34 20-8 0 0Z" fill="url(#${id})" stroke="${a[2]}" stroke-width="2.4" stroke-linejoin="round"/>`).join('')}<circle r="23" fill="${a[1]}"/><circle r="19" fill="#2b1517" stroke="${a[0]}" stroke-width="1.6"/><g transform="scale(.3) translate(-6.5 5)" fill="${n}"><ellipse cx="-17" cy="24" rx="11" ry="8.5" transform="rotate(-20 -17 24)"/><ellipse cx="23" cy="16" rx="11" ry="8.5" transform="rotate(-20 23 16)"/><rect x="-10" y="-26" width="6" height="50"/><rect x="30" y="-34" width="6" height="50"/><polygon points="-10,-32 36,-42 36,-26 -10,-16"/></g></svg>`}
 const PSF={};
 function psFig(src){if(!src)return'';if(src in PSF)return PSF[src];PSF[src]='';const im=new Image();
  im.onload=()=>{try{const c=document.createElement('canvas');c.width=16;c.height=32;const g=c.getContext('2d'),L=im.height>=64,d=(sx,sy,w,h,dx,dy)=>g.drawImage(im,sx,sy,w,h,dx,dy,w,h),o=L?d:()=>{};
@@ -3646,23 +3658,23 @@ function psCard(tr,l,lv){const r=psRw(l,tr);if(!r)return'';const k=tr+l,dn=PS.c[
   return `<button class="psc psbig${ok?' ok':''}${dn?' dn':''}" ${act} style="left:${(l-1)*180}px;top:0"><span style="font-size:30px;color:#fff">Lv.${l}</span><span style="display:flex;align-items:center;justify-content:center;height:330px">${u?`<img alt="" src="${u}" style="height:320px;image-rendering:pixelated;filter:drop-shadow(0 0 18px rgba(255,200,0,.55))">`:'<span style="font-size:28px">SKIN</span>'}</span><span style="font-size:30px;color:#ffe600">${nm}</span><span style="font-size:24px;padding:6px 14px;${ok?'background:#ffc107;color:#1a1208':''}">${st||'LV.'+l}</span></button>`}
  const ic=r.t==='d'?I.dia:r.t==='g'?I.gold:r.t==='e'?`<img alt="" src="${psEm(r.id).ic}" style="width:90px;height:90px;object-fit:contain">`:psSk(r,rc);
  return `<button class="psc${ok?' ok':''}${dn?' dn':''}" ${act} style="left:${(l-1)*180}px;top:${tr==='f'?66:290}px;border-color:${tr==='p'?'#a27bff':'#5c5a6a'}"><span style="display:flex;align-items:center;justify-content:center;height:${r.t==='s'?130:100}px;${r.t==='s'?'':'transform:scale(1.5)'}">${ic}</span><span style="font-size:24px;line-height:1.1;white-space:normal;text-align:center;padding:0 4px">${nm}</span><span style="font-size:20px;min-height:28px;padding:3px 6px;${ok?'background:#ffc107':''}">${st}</span><i class="a" style="left:0;right:0;bottom:0;height:7px;background:${rc}"></i></button>`}
-function psPaint(){const A=$('psIn'),S=$('psSc'),T=$('psTr');if(!A||!T)return;const lv=psLv(),keep=S.scrollLeft,on=psPrem(),old=psOld(),fk=srcOfPart(43),fu=psFig(fk);
+function psPaint(){const A=$('psIn'),S=$('psSc'),T=$('psTr');if(!A||!T)return;const lv=psLv(),keep=S.scrollLeft,on=psPrem(),old=psOld(),fu=psFig(srcOfPart(43));
  A.innerHTML=`<div class="a tx" style="left:40px;top:128px;font-size:64px;color:#ffe600">PASSE MUSICAL</div>
  <div class="a tx" style="left:40px;top:214px;display:flex;align-items:center;gap:16px"><span style="font-size:26px;background:#fff;color:#16121f;text-shadow:none;padding:6px 12px">EDIÇÃO LIMITADA</span><span style="font-size:26px;color:#b4b3c0">TEMPORADA 2</span></div>
- <div class="a" style="left:40px;top:280px;display:flex;align-items:center;gap:22px">${psEmb2(120,on)}<span class="tx" style="font-size:96px;color:${on?'#ffe600':'#fff'}">Lv.${lv}</span>${old?`<span style="display:flex;flex-direction:column;align-items:center;margin-left:30px;opacity:.95">${psEmb(70,old.p)}<span class="tx" style="font-size:20px;color:#b4b3c0;margin-top:4px">T1 · Lv.${old.lv}</span></span>`:''}</div>
+ <div class="a" style="left:40px;top:280px;display:flex;align-items:center;gap:22px">${psEmb2(120,on)}<span class="tx" style="font-size:96px;color:${on?'#ffe600':'#fff'}">${lv}</span>${old?`<span style="display:flex;flex-direction:column;align-items:center;margin-left:34px">${psEmb(86,old.p)}<span class="tx" style="font-size:34px;margin-top:2px;color:${old.p?'#ffc107':'#c9ced6'}">${old.lv}</span><span class="tx" style="font-size:16px;color:#b4b3c0;margin-top:2px">PASSE 1</span></span>`:''}</div>
  <div class="a" style="left:40px;top:424px;width:700px;height:44px;background:#1a1924;border:3px solid #3c3b4a;box-sizing:border-box"><div style="width:${psPct()}%;height:100%;background:#ffe600"></div><span class="a tx" style="left:14px;top:9px;font-size:22px">EXP ${(PS.x%PS_XP)}/${PS_XP}</span></div>
  <button class="a psup" data-a="ps:lv" style="left:754px;top:416px;width:62px;height:60px" aria-label="Comprar nível"><svg viewBox="0 0 40 40" width="40" height="40"><path d="M20 4 36 22H26V36H14V22H4Z" fill="#16121f"/></svg></button>
  <div class="a tx" style="left:830px;top:432px;font-size:20px;color:#b4b3c0;display:flex;align-items:center;gap:6px">${PS_LV}${I.dia}</div>
+ <div class="a" style="left:870px;top:100px;width:600px;height:440px;background:radial-gradient(ellipse at 50% 50%,rgba(150,90,255,.4),rgba(30,20,60,.15) 60%,transparent 75%);pointer-events:none"></div>
+ <div class="a" style="left:0;top:112px;width:2340px;display:flex;justify-content:center;pointer-events:none">${fu?`<img alt="" src="${fu}" style="height:420px;image-rendering:pixelated;filter:drop-shadow(0 0 24px rgba(255,220,0,.4))">`:''}</div>
+ <div class="a tx" style="left:1330px;top:250px;font-size:46px;color:#ffe600;pointer-events:none">${ITEM(43).n.toUpperCase()}</div>
+ <div class="a tx" style="left:1330px;top:312px;font-size:22px;color:#b4b3c0;line-height:1.4;white-space:normal;width:340px;pointer-events:none">PRÊMIO FINAL<br>NÍVEL ${PS_N} · ELITE</div>
  <div class="a tx" style="right:130px;top:128px;font-size:26px;display:flex;align-items:center;gap:8px">${I.dia}${Math.floor(+HUD.diamonds||0)}</div>
- <div class="a pstile" style="left:40px;top:536px"><span style="font-size:44px;color:#c9ced6">GRÁTIS</span></div>
- <div class="a pstile ps2" style="left:40px;top:760px"><span style="font-size:32px;color:#ffe600">ELITE</span><span style="font-size:42px">${on?'✔':'🔒'}</span></div>
- <button class="psb go" data-a="ps:all" style="left:230px;top:1000px;width:330px;height:70px;${psPend()?'':'background:#55535f;border-bottom-color:#3c3b46;color:#b4b3c0'}">COLETAR TUDO${psPend()?' ('+psPend()+')':''}</button>
- <button class="psb" data-a="ps:buy" style="left:580px;top:1000px;width:420px;height:70px;${on?'background:#55535f;border-bottom-color:#3c3b46;color:#b4b3c0':'background:linear-gradient(#ffe370,#ffb800 55%,#f29c00);border-bottom-color:#c47a00'}">${on?'ELITE ATIVO ✔':'DESBLOQUEAR · '+PS_PREM+' 💎'}</button>
- <div class="a tx" style="left:1030px;top:1010px;width:480px;font-size:18px;line-height:1.35;white-space:normal;color:#b0aebb">+60 XP POR PARTIDA · +40 NA VITÓRIA. O ELITE LIBERA A TRILHA DE BAIXO.</div>
- <div class="a" style="left:1560px;top:100px;width:780px;height:980px;background:radial-gradient(ellipse at 50% 38%,rgba(150,90,255,.45),rgba(30,20,60,.2) 60%,transparent 75%);pointer-events:none"></div>
- <div class="a" style="left:1560px;top:150px;width:780px;display:flex;justify-content:center;pointer-events:none">${fu?`<img alt="" src="${fu}" style="height:700px;image-rendering:pixelated;filter:drop-shadow(0 0 30px rgba(255,220,0,.4))">`:''}</div>
- <div class="a tx" style="left:1560px;width:780px;top:870px;text-align:center;font-size:44px;color:#ffe600;pointer-events:none">${ITEM(43).n.toUpperCase()}</div>
- <div class="a tx" style="left:1560px;width:780px;top:930px;text-align:center;font-size:24px;color:#b4b3c0;pointer-events:none">PRÊMIO FINAL · NÍVEL ${PS_N} · ELITE</div>`;
+ <button class="psb go" data-a="ps:all" style="left:1840px;top:190px;width:430px;height:76px;${psPend()?'':'background:#55535f;border-bottom-color:#3c3b46;color:#b4b3c0'}">COLETAR TUDO${psPend()?' ('+psPend()+')':''}</button>
+ <button class="psb" data-a="ps:buy" style="left:1840px;top:290px;width:430px;height:76px;${on?'background:#55535f;border-bottom-color:#3c3b46;color:#b4b3c0':'background:linear-gradient(#ffe370,#ffb800 55%,#f29c00);border-bottom-color:#c47a00'}">${on?'ELITE ATIVO ✔':'DESBLOQUEAR · '+PS_PREM+' 💎'}</button>
+ <div class="a tx" style="left:1840px;top:386px;width:430px;font-size:18px;line-height:1.35;white-space:normal;color:#b0aebb">+60 XP POR PARTIDA · +40 NA VITÓRIA. O ELITE LIBERA A TRILHA DE BAIXO.</div>
+ <div class="a pstile" style="left:40px;top:606px"><span style="font-size:44px;color:#c9ced6">GRÁTIS</span></div>
+ <div class="a pstile ps2" style="left:40px;top:830px"><span style="font-size:32px;color:#ffe600">ELITE</span><span style="font-size:42px">${on?'✔':'🔒'}</span></div>`;
  let h=`<div class="a" style="left:0;top:0;width:${PS_N*180+170}px;height:46px;background:rgba(10,10,18,.55)"></div>`;
  for(let l=1;l<PS_N;l++)h+=`<div class="psl${l<=lv?' on':''}" style="left:${(l-1)*180}px">Lv.${l}</div>`+psCard('f',l,lv)+psCard('p',l,lv);
  h+=psCard('p',PS_N,lv);
@@ -3671,7 +3683,7 @@ function psPaint(){const A=$('psIn'),S=$('psSc'),T=$('psTr');if(!A||!T)return;co
 function PSPAGE(){return `<div class="pg" id="nlPs" style="display:none"><div class="pgs"><div class="ph" style="background:none"><div class="pht" style="left:auto;right:190px">PASSE MUSICAL</div><button class="pgx" data-a="psx" aria-label="Fechar"><svg viewBox="0 0 70 64" width="70" height="64" stroke="#fff" stroke-width="6" fill="none"><path d="M6 4L64 60M64 4L6 60"/></svg></button></div>
 <div class="a" id="psIn" style="left:0;top:0;width:2340px;height:1080px;pointer-events:none"></div>
 <div id="psSc"><div id="psTr"></div></div></div></div>`}
-{const st=document.createElement('style');st.textContent=`#nl #psSc{position:absolute;left:230px;top:470px;width:1300px;height:520px;overflow-x:auto;overflow-y:hidden;touch-action:pan-x;scrollbar-width:none}#nl #psSc::-webkit-scrollbar{display:none}
+{const st=document.createElement('style');st.textContent=`#nl #psSc{position:absolute;left:230px;top:540px;width:2080px;height:520px;overflow-x:auto;overflow-y:hidden;touch-action:pan-x;scrollbar-width:none}#nl #psSc::-webkit-scrollbar{display:none}
 #nl #psIn>*{pointer-events:auto}#nl #psIn .tx{pointer-events:none}
 #nl #nlPs .psc{position:absolute;width:170px;height:214px;box-sizing:border-box;background:rgba(58,58,70,.85);border:4px solid;display:flex;flex-direction:column;align-items:center;justify-content:space-around;color:#fff;text-shadow:2px 2px 0 #000;padding:8px 0 12px;font-size:24px}
 #nl #nlPs .psc.psbig{width:330px;height:490px;top:0;border-color:#ffe600;background:linear-gradient(rgba(110,70,200,.55),rgba(40,30,80,.9));box-shadow:0 0 0 4px rgba(255,230,0,.35);padding:12px 0 14px}
@@ -7675,14 +7687,14 @@ function wr(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 function rm(k){try{localStorage.removeItem(k)}catch(e){}}
 /* o que vai pra nuvem: tudo que começa com mc_ (menos ajustes do aparelho e chaves de sistema) + bônus do nível 100 */
 var SKIP=/^(mc_acck|mc_sid|mc_gate.*|mc_adm.*|mc_kick|mc_maint.*|mc_ver|mc_photo|mc_gfx|mc_musvol|mc_sens2|mc_hudcfg)$/;
-function ok(k){return (/^mc_/.test(k)&&!SKIP.test(k))||k==='mf_l100'||k==='mf_pass'||k==='mf_pass2'}
+function ok(k){return (/^mc_/.test(k)&&!SKIP.test(k))||k==='mf_l100'||k==='mf_pass'||k==='mf_pass2'||k==='mf_emb1'}
 /* PASSE NUNCA ANDA PRA TRÁS na mesma conta: junta o maior XP, o Elite e tudo que já foi resgatado (aparelho + nuvem) */
 function psJoin(a,b){function p(v){try{var q=JSON.parse(v||'null');return q&&typeof q==='object'?q:null}catch(e){return null}}
  var A=p(a),B=p(b);if(!A)return B?b:null;if(!B)return a;var c={};[A.c,B.c].forEach(function(o){if(o)Object.keys(o).forEach(function(k){if(o[k])c[k]=1})});
  return JSON.stringify({x:Math.max(+A.x||0,+B.x||0),p:(A.p||B.p)?1:0,c:c})}
 function psKeep(v,k){k=k||'mf_pass';var j=psJoin(rd(k),v);if(j){wr(k,j);try{window.__psLoad&&window.__psLoad()}catch(e){}}}
 /* "nada mudou aqui" também vale para o salvamento antigo, feito antes de o passe entrar na nuvem */
-function unchanged(){var o=snap(),h=rd('mf_gh');if(hash(o)===h)return true;delete o.mf_pass2;if(hash(o)===h)return true;delete o.mf_pass;return hash(o)===h}
+function unchanged(){var o=snap(),h=rd('mf_gh');if(hash(o)===h)return true;delete o.mf_pass2;delete o.mf_emb1;if(hash(o)===h)return true;delete o.mf_pass;return hash(o)===h}
 function keys(){var a=[];try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(ok(k))a.push(k)}}catch(e){}return a.sort()}
 function snap(){var o={};keys().forEach(function(k){var v=rd(k);if(v!=null&&v.length<200000)o[k]=v});return o}
 function hash(o){var s=JSON.stringify(o),h=5381;for(var i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return String(h)}
@@ -7717,7 +7729,7 @@ function fetchCloud(u){return db.ref('accounts/'+u.uid).once('value').then(funct
 function reloadSoon(){setTimeout(function(){try{(window.MFR||function(){location.reload()})()}catch(e){location.reload()}},350)}
 /* traz o progresso da nuvem pra este aparelho e reinicia o jogo */
 function apply(u,c){applying=true;
- try{var old=rd('mf_gu')===u.uid?rd('mf_pass'):null,old2=rd('mf_gu')===u.uid?rd('mf_pass2'):null;keys().forEach(rm);var d=c.d||{};Object.keys(d).forEach(function(k){if(ok(k))wr(k,String(d[k]))});mark(u,c.t||Date.now(),hash(snap()));if(old)psKeep(old);if(old2)psKeep(old2,'mf_pass2')}catch(e){}
+ try{var old=rd('mf_gu')===u.uid?rd('mf_pass'):null,old2=rd('mf_gu')===u.uid?rd('mf_pass2'):null,old3=rd('mf_gu')===u.uid?rd('mf_emb1'):null;keys().forEach(rm);var d=c.d||{};Object.keys(d).forEach(function(k){if(ok(k))wr(k,String(d[k]))});mark(u,c.t||Date.now(),hash(snap()));if(old)psKeep(old);if(old2)psKeep(old2,'mf_pass2');if(old3)psKeep(old3,'mf_emb1')}catch(e){}
  reloadSoon()}
 function pristine(){return !rd('mc_nome')&&!rd('mc_xp')}
 function sync(u){
@@ -7726,7 +7738,7 @@ function sync(u){
   if(rd('mf_gu')===u.uid){                                                  /* este aparelho já é dessa conta */
    var lastT=+rd('mf_gt')||0;
    if(c.t>lastT&&unchanged()){apply(u,c);return 'ok'}      /* outro aparelho salvou depois e aqui nada mudou */
-   psKeep((c.d||{}).mf_pass);psKeep((c.d||{}).mf_pass2,'mf_pass2');
+   psKeep((c.d||{}).mf_pass);psKeep((c.d||{}).mf_pass2,'mf_pass2');psKeep((c.d||{}).mf_emb1,'mf_emb1');
    if(c.t>lastT)return db.ref('accounts/'+u.uid+'/prev').set({t:c.t,d:c.d||{}}).then(function(){return upload(u)}).then(function(){return 'ok-same'});
    return upload(u).then(function(){return 'ok-same'})}
   if(pristine()){apply(u,c);return 'ok'}                                    /* aparelho novo: só traz a conta */
@@ -7820,7 +7832,7 @@ if(/^https?:$/.test(location.protocol)){
    if(rd('mf_lo')==='1'){auth.signOut();return}
    if(rd('mf_gu')!==u.uid)return;
    fetchCloud(u).then(function(c){if(!c)return;var lastT=+rd('mf_gt')||0;
-    if(c.t>lastT&&unchanged())apply(u,c);else{psKeep((c.d||{}).mf_pass);psKeep((c.d||{}).mf_pass2,'mf_pass2')}}).catch(function(){})})
+    if(c.t>lastT&&unchanged())apply(u,c);else{psKeep((c.d||{}).mf_pass);psKeep((c.d||{}).mf_pass2,'mf_pass2');psKeep((c.d||{}).mf_emb1,'mf_emb1')}}).catch(function(){})})
  }).catch(function(){})}
 })();
 </script>
