@@ -3,8 +3,8 @@
 
 <html lang="pt-BR"><head><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#14173F"><script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js")})}</script>
 <meta charset="utf-8">
-<meta name="mf-version" content="3.4.27">
-<meta name="mf-notes" content="Versão 3.4.27: skins de arma da Desert removidas, codeguin de skin de arma · enviar emote por ID no painel · skin Batman no painel · TEMPORADA 2 (patentes do zero · MESTRE 2400 · DESAFIANTE 5000), emote novo no DESAFIANTE, insígnias sem borda branca e placar sincronizado no multiplayer.">
+<meta name="mf-version" content="3.4.28">
+<meta name="mf-notes" content="Versão 3.4.28: PASSE MUSICAL (temporada 2 do passe, 50 níveis, novo layout, camisa da Argentina e emote do Jamal) com a skin DJ Rosa e o emblema da nota musical · emblema do passe antigo continua no perfil de quem pegou · Versão 3.4.27: skins de arma da Desert removidas, codeguin de skin de arma · enviar emote por ID no painel · skin Batman no painel · TEMPORADA 2 (patentes do zero · MESTRE 2400 · DESAFIANTE 5000), emote novo no DESAFIANTE, insígnias sem borda branca e placar sincronizado no multiplayer.">
 <script id="mfBoot">
 /* Carregador de atualização: abre a versão mais nova já baixada (guardada no aparelho) dentro de uma moldura de tela cheia.
    Se ela não ligar o jogo, desiste dela sozinho e volta para a versão que veio instalada — na hora ou na próxima vez que abrir. */
@@ -2241,6 +2241,9 @@ SKINS[33]='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAA
 /* SKIN BATMAN (id 40): conjunto, fora da loja · só chega pelo PAINEL (ENVIAR SKIN) */
 SKINS[40]='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAFdUlEQVR4nO2aW2gcZRTH/3PZ+2w2m82m2zY2DRil+GALopQKPoh962OlIF4QVBpQSl5taglKi0IUKhH0yRepBX3RJ0EL4hUDrYWWYjE12Ms2m73NzszOfXzYZszsbGZ2OrOZaub3NN93vu/MmbPn+/abOYeAC0MjOw0n+aUPnnWcv/uF9wm3e4QJ7TYgkclthh2h4eoAiW8CAIoTey39leWLg7Bn0yHDNiBstrwD+t4D2NXrPfv/6/S9B/xf2fJLgMhvf8jxf16TeEcFVCLjy4D67T9CPSfQbg+oKtImmRIOrnsAHUsgkclBlgQYqgIAIOgY4ol0X/uDruv+rRwgRDo76rgEpDYLwzCQSDGIxdMAAEUWILU5EASBRGrIlwFCazXkJaApzgPiKYh8AwCQzAwDgKXtNv9+p48lkEIylQUAyLIIAGabTjBQlbbjfFV2locNQdHxnktg8e0j5nV+RwFJJoME01kCEidA5HjUb1XNMY8dP9vzBrpLhBiGEe4S2GiTyu8omNdrD98sVwAAuVLx7ph/x9/vm91G2Lw/e/KUJSLePf2ORS6JnOMv1j2/m2593XjV79W+brb8STByQNgGhA0xe/KUQVEUOI6DIHCg6ThEUUSjUUOtVsP+/QewXv7RwscWBUenX0WhUDTb1WrFbM/PzwMAZmZmTBkAy/gzC584Gvj69CugKAqiKEIQOOTzBei6DkVRwLINFApFi1xVVVN/tVrBwpl5xz3Bdg7IF0YgcDxIElBV1dG4XmjcMlKpv7FzqI3P39rTMaT9I26yKWicDoqZ8KxzPQRB3H14FjzPW5x5L9gcQNM0RkfHAACyLNsmxGPOCn/+6QecLYv4am4KL86vAgA+nRnFG+9dw0QpiScPWh2giC3zmilOAQC4yrUN9cuyDFmWoWoqJMn/i9qGJ0GSJJFMJj0rPHZ4CqfPreLQiWtoNjsvS4dO1LFt23YcOzyKRYf3J1lkbX3l8i1LW9M0yLIMjuPAsqxNHou5/EJd2BygSDIootNNkt73yMXm45h76TLGmRRe/rCNlZUyvp6bxA1uDN/ffsRxbjzZebGSW3fMvlJph2WNM8wQKIpCuy0hl2NRLNr3AC/YHMBxLFqtFkRRAM/zyOcLveY5sth8ApfacRx5jgZN0/imrkIQBACc47xeEdBNMp0CQRCgYjTkAN4z6PPnv7V1XrjwOwBg375HsbS0ZJE9/cxBR4W1Wg0kSZrRYxgGJEmCKAqo1WoYGRnZcG6vCOhGU1SQNNU5egfwJ07/9usv9s54CgDQS/ba0WmkmQw0RQfLNnBk+2cW+fMHCJQbBiZLNPT0TjxQGkL95lVcXlZQergjW8/8uut+IqBer0LTNGSzOUB3PHX3hevrsFfKNRlXbpEoDRP4bnEJD45nsWtYxZUbGqDrALnxJtUrAr784pxtXCIeB8fxGCuVUK9VbXIvEIkkY3GjpmnmRw6KioGiKM9KKYoGQVkf1NAUaJr3c0Uv1iK017eGNdkaPFtxPgiN7d5r6WiuXMeuPU+BZ++gevMqcmOTFvnKXxfvweR7hymMW9pc9QaS2QLS2VHUy3/aEjRiy1tE2CIgmRlGghmBIvLQVcn8/LWGQuYt7Zhe93TDIMkMl8A3ypY+rxEQERERERERERERERERERGx9Qj8Y0HQ9QV+8/9ubPnscOSAsA0IG9/ryW99wfHZNwea/3cj8MSI3/qCoPP/bgTuAL/1BUHn/90I3AFr9FtfMOj8vxuBO8BrfcGg8/9uBO4Av/UFQef/3fDtgKDrC4LO/7vh2wF+6wu6CTr/78bANsF+GXT+3w3fB6FB1BcEmf93vZefyQDgt75g0Pl/NwKPgCDrCzYj//8PrCD2aRzjAzcAAAAASUVORK5CYII=';
 CAT[0].push({id:40,n:'Batman',p:0,r:4,nos:1});
+/* SKIN DJ ROSA (id 43): conjunto, fora da loja · só no PASSE MUSICAL (nível final, trilha ELITE) */
+SKINS[43]='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAIkUlEQVR42u2bbWxT5xXHf7aT2Ln2tRNsxzjIMEKAlkCBBgplSxoYjJZJ08Skae0mtk4bdEhVp35YyySkbkzd+mHSqkllL9I0bVXFF1grtWMTK2OhwEYHyQqsIQ0vi9smEDsvjn3jxLHvPjj3xb43dliAoPX+P917nhc/59xzznPO8xzbKINQKCTX1dWRyWSQJIlcLkcmk8FutwPw4Zs+HM1dZN+NQE5icnyYiup6HOujZDtW4Vh7wcY9DDufcFgC+KQLoKx9Llu2TM5kMng8Hjp/2cNYeoKHn1nByMgIvb29t+U3LA2wBGAJYM5QEQ6HZT1BFMVZTRgKhYpJJeOIvr6+OfURFcWE0dFRQ6fKykoAxvon4BFIJpMABAIBo0rZjUp18+ZNamtrEQSBZDJJXV0dALFYbO41YCadMpmMutilK+uAdIFgytqZ3c7IyIj6fi8wrgqgvr6+gPDPl3aXHPDx78vseVv3GGjNzc2cO3fO9Lmvr29uBdAgXSzf67O7sb0DtEyZ60kZ+TPA278ydP3icqdRgxIXeHylixvJHBXDF/jckioGpRyLpYucm2sN6E/lynZK/bUCtmQ1QouN1HEHbl4x9DWbz+u0cW04S0S0k8nl+8wT7Mzkt+9GJFiwC/T8psrQqfGbEwAkjzioXlCDY0M8/37cYejr0QuqCMrcynz3QqRoEED23H2GTqXSXUPftRduezh+V3OBQCAgu1wuBEHg/Uu/ZWh4KQPRKMFIJN8eDJZcsNT0opycSOKp8hTQFdrEqb1UJir58KHnAVhw6RWkjc/ltafKg3Dp+yXnvzz/aTniD6tzzvtZEIdTIJuI4fAGsG3dc0sCtSLB2z2h4+B+6lqzqs0vXt2Ao7krb16nKuDT+X4Rf5hovA976wGGRvNbocfvsXKBu+4DAoGAXEzU+wAFD218uiBcliSJdDpNb+hZ9csrcJbSgCmM7/6hwT+Y+QwF0bgWMOl9gIIhXQgf8YfV8eV8SoXL5TIQBUFAFEXatjxXQCuFaI9+S8zmmW8SYXKA7D/8ODbEmczKBQyqW+cUo8qi9W3Kc60uSYvG+wrezdrzmd0MfMCOx5oAOPG3awUZoSAImAkHYHPbAgYGRshmcyRP5BdY/9MXdFvp76a+erwgBsh+5wUd08Z5FUHoBTJkkpzViiJDo6OqJhggGrViWgEsWhScYjpW8LVdLldBaqzP8jKZSY69PcSTX29UF1t9cZ8WOQ7uJ3nEgWdn3hSyZ+fT60tR/aTWZ2zlj00X5Oxso/fqdkI79+Gp8jDEaIHaK4JRnGixWSgC1GtRSR/QuHSjDBCeX1ngA0RRxOMx98qnz3Srz+9VfcHQXn1xH9e7vSyMT6optHveZAHTxSagMB4MSNhbD2iHCUefyX+UiGaCUlRCiAhIUcl0ffo290J3SR9g27Ztm8EJKsy73W7z3CCVwueN03V5gjc+3jzt5Ln2/QzEBEI795X9Ern2/dhbD+DsbMs7yTUn8sJ82Z/XonGNWVuoATnWi8Mb1EVgWrqdHZdwOAUlO7XdkTigr78amCjp1AZiAouWnCTNHw3ji/tXe09CJ4wlWvioaS+1oliwC/zpkqbuj4UayDlFbPpPVzNfE9BkhhxgT8bL+4B0On3LzEuSxMjICOl0WmWkeMuK+MOEdu4zZb64P+QZt7ceYOCIoDo5RHBtfhyAHW3aF/7PlRYiq16j9/oTpnMvbPgzvVe3s2j9e+UFIEnmdhQOh9Wjr2InKAgCN27cYLqxioMqdlylBDAQEwhB3lyqUJ3fppanAEgkUlp67d1EIvESsNr0973eH5BIrMbrfaq8E5Rl2eADli9fDsCZd06ptHlB7fyvq6ODSONS3KLH1Jvr9/PpPLJ+i1L2cL1QlLFN438A4FrPuwXjFzeuN9CK26fG2WYUCZY7p9NviYIgMDg4iM/n49+1u02Z0wcmynsxg8XCqJ1Xw9DgcEE0t0E+Zph/eLCfocEoE3/5tZaDyNrhimPbHr2QbDPSgLhOAPr0V4FfdwKs9PUHAqoGTJzaq50il0h3S0aTU2aj7O8Rf9h0F9Cnv6Y7Ss185I+6cLhrbjk9tmDBggULFixYsGDBggULFiz8/+O2HxZkM6fl+5u+wfmfXKHaXUN38BjBSISBaBSA+x98cMb1BdF4H8teXUkGO44qF/YJ6bYfcFilspYALB8wOzQ3N8sAZ//+c5Wm9wEKQl/VfkqpPxBFkZPpLxnm1PsABfo7BuV6fCb3/3dcAC0tLYZ7BUmS1CIKMyjMC4LA4f4W0z4lr791Qqj74MVZ8TDrGiGzGoKjr59m05ZtnD+jnek/+/xW9TkY9DE4OErPlclpma+dZdX6XROAz+cDIJfTLiZat3+e08ffYs3G9Srtia/Uqs+vHbrOrq81MBCbMC1iUC5FpjMB5V3fPmcmsGvXLoMJJJNJOv8VZUG9ph19/RnD2E0PL+Pgjw4aTcTk7l9fHwDM+P7/jmvAdDUEa1ZHCv57sPhTmjDaHglxuduO2+1G6H41H0BN6spnu6sorkjKdgxrX00MIuQy94YJ/C/o6EyrRVfZVJ4xW2iJ2p6TEiB4Odp+VqU9utyvW3UlWSkF49LcCyCVSmFmAocPH6a1tbXseMfUVpmNR7UvXCVwtP0sjzb6dCvVqqpkaRhbTXhGBRB3XADKVqd3gh6Ph3gsRnt7u0pbt25dwbhwOIwkSTR91/wfGF6vm+8V1ARoppZIpPB63QU1A3PmBN8/f14GaFixQqWteuABAN44dEil3bd2raY1o0miPR8AsOPLxn+YKNff5TCT6+87LgCXyyUDlCu10dcXOJ1O1VTG3nwZgIwuKq/a+m21wEGBvhhCabv6i2/NOjuctQCU+oKujg4t0NGlv2YIRiL4fDVUVFaY/u1Gn/6qjlG/2ToFcFRiHxuZtQD+C9KamxPm5oUJAAAAAElFTkSuQmCC';
+CAT[0].push({id:43,n:'DJ Rosa',p:0,r:4,nos:1,cj:1});
 /* SKIN FEITICEIRO BRANCO (id 42): skin normal (NÃO é conjunto → as peças dela vão pro cofre e dá pra misturar) · na LOJA por 900 diamantes */
 SKINS[42]='data:image/png;base64,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';
 CAT[0].push({id:42,n:'Feiticeiro Branco',p:900,r:4});
@@ -3282,9 +3285,10 @@ ${d.v?`<div class="a" style="left:210px;top:148px;display:flex;align-items:cente
 ${lkOK?`<div class="a pfb" style="left:450px;top:355px;width:240px;height:80px"><span class="a" style="left:16px;top:16px;display:flex">${PFTH(lk.me)}</span><div class="a tx" style="left:84px;top:26px;font-size:34px;color:${lk.me?'#ffc107':'#fff'}">${pfLk(lk.n)}</div></div>`:''}
 <div class="a pfb" style="left:30px;top:455px;width:660px;height:220px;overflow:hidden">
 <div class="a tx" style="left:30px;top:30px;font-size:48px;color:#ffc107">PASSE</div>
-<div class="a tx" style="left:30px;top:98px;font-size:26px;color:#b4b3c0">${d.me?(psPrem()?'ELITE ATIVO':'PASSE GRÁTIS'):'TEMPORADA 1'}</div>
-<div class="a" style="right:34px;top:6px;display:flex;flex-direction:column;align-items:center;gap:0">${psEmb(92,d.me&&psPrem())}<span class="tx" style="font-size:40px;margin-top:2px;color:${d.me&&psPrem()?'#ffc107':'#c9ced6'}">${d.me?psLv():0}</span></div>
-<div class="a" style="left:30px;top:150px;width:600px;height:20px;background:#32313c"><div style="width:${d.me?psPct():0}%;height:100%;background:#ffc107"></div></div>
+<div class="a tx" style="left:30px;top:98px;font-size:26px;color:#b4b3c0">${d.me?(psPrem()?'ELITE ATIVO':'PASSE GRÁTIS'):'TEMPORADA 2'}</div>
+<div class="a" style="right:34px;top:6px;display:flex;flex-direction:column;align-items:center;gap:0">${psEmb2(92,d.me&&psPrem())}<span class="tx" style="font-size:40px;margin-top:2px;color:${d.me&&psPrem()?'#ffe600':'#c9ced6'}">${d.me?psLv():0}</span></div>
+${d.me&&psOld()?`<div class="a" style="right:150px;top:18px;display:flex;flex-direction:column;align-items:center">${psEmb(70,psOld().p)}<span class="tx" style="font-size:20px;margin-top:4px;color:#b4b3c0">T1 · ${psOld().lv}</span></div>`:''}
+<div class="a" style="left:30px;top:150px;width:600px;height:20px;background:#32313c"><div style="width:${d.me?psPct():0}%;height:100%;background:#ffe600"></div></div>
 <div class="a" style="left:0;right:0;bottom:0;height:12px;background:repeating-linear-gradient(135deg,#ffc107 0 8px,#222 8px 16px)"></div></div>
 ${pfReqBtn(d,lkOK)||`<div class="a tx" style="left:30px;top:710px;font-size:30px;color:#ffc107">MARCOS RECENTES</div>
 <div class="a tx" style="left:30px;top:765px;font-size:26px;color:#8d8c99">NENHUM MARCO AINDA</div>`}</div>
@@ -3576,15 +3580,19 @@ function rmAct(a){const [k,v]=[a.split(':')[0],a.slice(a.indexOf(':')+1)];
   if(MPF.rm.slots(r).some(x=>x&&x.id!==myId()&&!x.rd)){say('NEM TODOS ESTÃO PRONTOS');return}RM.busy=1;
   MPF.rm.start((plan,err)=>{RM.busy=0;if(err==='spec')return;if(err){say(err==='ready'?'NEM TODOS ESTÃO PRONTOS':err==='need2'?'PRECISA DE 2 JOGADORES PARA VOCÊ ASSISTIR':err==='perm'?'ERRO ONLINE':'ERRO AO DECOLAR');return}rmLaunch(RM.cur||r,plan)})}}
 /* ===== PASSE ELITE (estilo Free Fire) · 50 níveis · trilha GRÁTIS + trilha ELITE ===== */
-const PS_N=50,PS_XP=200,PS_PREM=600,PS_LV=60,PS_KEY='mf_pass';   /* níveis · XP por nível · preço do Elite (diamantes) · preço de 1 nível (diamantes) */
+const PS_N=50,PS_XP=200,PS_PREM=600,PS_LV=60,PS_KEY='mf_pass2',PS_OLD='mf_pass';   /* níveis · XP por nível · preço do Elite (diamantes) · preço de 1 nível (diamantes) */
 let PS={x:0,p:0,c:{}},psFirst=0,psAsk={k:'',t:0};
 const psLoad=()=>{try{const q=JSON.parse(localStorage.getItem(PS_KEY)||'null');if(q){PS.x=Math.max(0,Math.floor(+q.x)||0);PS.p=q.p?1:0;PS.c=q.c&&typeof q.c==='object'?q.c:{}}}catch(e){}};psLoad();window.__psLoad=psLoad;
 let psUpT=0;const psSave=()=>{try{localStorage.setItem(PS_KEY,JSON.stringify(PS))}catch(e){}clearTimeout(psUpT);psUpT=setTimeout(()=>{try{window.__accBackup&&window.__accBackup('passe')}catch(e){}},1500)};
 const psLv=()=>Math.floor(PS.x/PS_XP),psRl=()=>Math.min(PS_N,psLv()),psPrem=()=>!!PS.p,psPct=()=>(PS.x%PS_XP)/PS_XP*100;
 function psRw(l,tr){
- if(tr==='f'){return l%5===0?{t:'d',a:10+l/5*2}:{t:'g',a:40+l*6}}
- if(l===10)return{t:'e',id:'dab'};if(l===45)return{t:'s',id:106};if(l===50)return{t:'s',id:35};
+ if(tr==='f'){if(l===PS_N)return null;return l%5===0?{t:'d',a:10+l/5*2}:{t:'g',a:40+l*6}}
+ if(l===PS_N)return{t:'s',id:43};
+ if(l===25)return{t:'e',id:'jamal'};if(l===40)return{t:'s',id:104};
  return l%5===0?{t:'d',a:20+l}:{t:'g',a:100+l*8}}
+const psHas=(tr,l)=>!!psRw(l,tr);
+/* PASSE ANTIGO (temporada 1): guardado em 'mf_pass'. Quem comprou o Elite ou resgatou algo mantém o EMBLEMA antigo no perfil; quem não pegou fica só com o do passe novo */
+function psOld(){try{const q=JSON.parse(localStorage.getItem(PS_OLD)||'null');if(!q||typeof q!=='object')return null;const c=q.c&&typeof q.c==='object'?Object.keys(q.c).filter(k=>q.c[k]).length:0;if(!q.p&&!c)return null;return{lv:Math.floor((+q.x||0)/200),p:q.p?1:0}}catch(e){return null}}
 const psEm=id=>EMO.list.find(x=>x.id===id);
 const psTx=r=>r.x?psTx0(r)+' + '+psTx0(r.x):psTx0(r),psTx0=r=>r.t==='d'?'+'+r.a+' DIAMANTES':r.t==='g'?'+'+r.a+' OURO':r.t==='s'?ITEM(r.id).n.toUpperCase():'EMOTE '+psEm(r.id).n;
 function psGive(r){if(r.x)psGive(r.x);try{
@@ -3593,9 +3601,9 @@ function psGive(r){if(r.x)psGive(r.x);try{
  else if(r.t==='e'){if(OWN.includes('e:'+r.id))HUD.gold=Math.floor(+HUD.gold||0)+300;else OWN.push('e:'+r.id)}   /* já tinha = vira 300 de ouro */
  else if(r.t==='s'){if(OWN.includes(r.id))HUD.gold=Math.floor(+HUD.gold||0)+300;else OWN.push(r.id)}
  localStorage.setItem('mc_hud',JSON.stringify(HUD));localStorage.setItem('mc_inv',JSON.stringify(OWN));paintHud();try{vPaint('cf')}catch(e){}}catch(e){}}
-function psClaim(tr,l,quiet){const k=tr+l;if(PS.c[k]||l>psLv()||(tr==='p'&&!PS.p))return 0;PS.c[k]=1;const r=psRw(l,tr);psGive(r);psSave();if(!quiet){say('RECEBIDO: '+psTx(r));psPaint()}return 1}
+function psClaim(tr,l,quiet){const k=tr+l;if(!psHas(tr,l)||PS.c[k]||l>psLv()||(tr==='p'&&!PS.p))return 0;PS.c[k]=1;const r=psRw(l,tr);psGive(r);psSave();if(!quiet){say('RECEBIDO: '+psTx(r));psPaint()}return 1}
 function psConf(k,m){if(psAsk.k===k&&Date.now()-psAsk.t<3500){psAsk.k='';return 1}psAsk={k:k,t:Date.now()};say(m);return 0}
-function psPend(){let n=0;for(let l=1;l<=psRl();l++){if(!PS.c['f'+l])n++;if(PS.p&&!PS.c['p'+l])n++}return n}
+function psPend(){let n=0;for(let l=1;l<=psRl();l++){if(psHas('f',l)&&!PS.c['f'+l])n++;if(PS.p&&!PS.c['p'+l])n++}return n}
 function psAct(a){
  if(a==='psx'){pg(null);return}
  if(a==='ps:buy'){if(PS.p)return say('ELITE JÁ ATIVO');if((+HUD.diamonds||0)<PS_PREM)return say('DIAMANTES INSUFICIENTES');
@@ -3611,6 +3619,8 @@ function psGain(n){const l0=psLv();PS.x+=n;psSave();say('+'+n+' XP DO PASSE'+(ps
 function psEmb(h,gold){const a=gold?['#ffe26a','#f0a800','#8a5a00']:['#f1f3f6','#b4bac4','#5d646e'],id='pe'+(gold?'g':'s');let s='';
  for(let i=0;i<10;i++){const R=i%2?5.5:13,q=(i*36-90)*Math.PI/180;s+=(R*Math.cos(q)).toFixed(1)+','+(R*Math.sin(q)).toFixed(1)+' '}
  return `<svg viewBox="-56 -56 112 112" width="${h}" height="${h}" style="display:block"><defs><linearGradient id="${id}" x1="0" y1="-1" x2="0" y2="1"><stop offset="0" stop-color="${a[0]}"/><stop offset="1" stop-color="${a[1]}"/></linearGradient></defs>${[0,1,2,3,4].map(i=>`<path transform="rotate(${i*72})" d="M0 0C-20-8-30-34-14-50Q-7-56 0-46Q7-56 14-50C30-34 20-8 0 0Z" fill="url(#${id})" stroke="${a[2]}" stroke-width="2.4" stroke-linejoin="round"/>`).join('')}<circle r="17" fill="${a[1]}"/><polygon points="${s}" fill="#2b1517" stroke="${a[0]}" stroke-width="1.6" stroke-linejoin="round"/></svg>`}
+function psEmb2(h,on){const c=on?'#ffe600':'#c9ced6',e=on?'#8a6a00':'#5d646e',id='pn'+(on?'g':'s');
+ return `<svg viewBox="-56 -56 112 112" width="${h}" height="${h}" style="display:block"><defs><linearGradient id="${id}" x1="0" y1="-1" x2="0" y2="1"><stop offset="0" stop-color="${on?'#fff27a':'#f1f3f6'}"/><stop offset="1" stop-color="${on?'#ffb800':'#b4bac4'}"/></linearGradient></defs><polygon points="0,-54 47,-27 47,27 0,54 -47,27 -47,-27" fill="#1d1426" stroke="${c}" stroke-width="5" stroke-linejoin="round"/><g transform="translate(0 6)" fill="url(#${id})" stroke="${e}" stroke-width="2" stroke-linejoin="round"><ellipse cx="-17" cy="24" rx="11" ry="8.5" transform="rotate(-20 -17 24)"/><ellipse cx="23" cy="16" rx="11" ry="8.5" transform="rotate(-20 23 16)"/><rect x="-10" y="-26" width="6" height="50"/><rect x="30" y="-34" width="6" height="50"/><polygon points="-10,-32 36,-42 36,-26 -10,-16"/></g></svg>`}
 const PSF={};
 function psFig(src){if(!src)return'';if(src in PSF)return PSF[src];PSF[src]='';const im=new Image();
  im.onload=()=>{try{const c=document.createElement('canvas');c.width=16;c.height=32;const g=c.getContext('2d'),L=im.height>=64,d=(sx,sy,w,h,dx,dy)=>g.drawImage(im,sx,sy,w,h,dx,dy,w,h),o=L?d:()=>{};
@@ -3618,35 +3628,49 @@ function psFig(src){if(!src)return'';if(src in PSF)return PSF[src];PSF[src]='';c
   if(L){d(36,52,4,12,12,8);o(52,52,4,12,12,8);d(20,52,4,12,8,20);o(4,52,4,12,8,20)}else{d(44,20,4,12,12,8);d(4,20,4,12,8,20)}
   PSF[src]=c.toDataURL();try{if($('nlPs').style.display==='block')psPaint()}catch(e){}}catch(e){}};im.src=src;return''}
 const psSk=(r,rc)=>{const f=x=>{const u=psFig(srcOfPart(x));return u?`<img alt="" src="${u}" style="height:${r.x?120:150}px;image-rendering:pixelated">`:`<span style="font-size:24px;color:${rc}">SKIN</span>`};return f(r.id)+(r.x?f(r.x.id):'')};
-function psCard(tr,l,lv){const r=psRw(l,tr),k=tr+l,dn=PS.c[k],can=l<=lv&&(tr==='f'||PS.p),ok=can&&!dn;
+function psCard(tr,l,lv){const r=psRw(l,tr);if(!r)return'';const k=tr+l,dn=PS.c[k],can=l<=lv&&(tr==='f'||PS.p),ok=can&&!dn,big=tr==='p'&&l===PS_N;
  const rc=r.t==='s'?RC[ITEM(r.id).r]:r.t==='e'?RC[psEm(r.id).r]:'#ffc107';
+ const nm=r.t==='d'||r.t==='g'?'+'+r.a:(r.t==='s'?ITEM(r.id).n:psEm(r.id).n).toUpperCase();
+ const st=dn?'<span style="color:#7dff9a">RESGATADO</span>':ok?'<span style="color:#1a1208">RESGATAR</span>':l>lv?'':'🔒';
+ const act=`data-a="${ok?'ps:c:'+tr+':'+l:'ps:n:'+tr+':'+l}"`;
+ if(big){const u=psFig(srcOfPart(r.id));
+  return `<button class="psc psbig${ok?' ok':''}${dn?' dn':''}" ${act} style="left:${(l-1)*180}px;top:0"><span style="font-size:30px;color:#fff">Lv.${l}</span><span style="display:flex;align-items:center;justify-content:center;height:330px">${u?`<img alt="" src="${u}" style="height:320px;image-rendering:pixelated;filter:drop-shadow(0 0 18px rgba(255,200,0,.55))">`:'<span style="font-size:28px">SKIN</span>'}</span><span style="font-size:30px;color:#ffe600">${nm}</span><span style="font-size:24px;padding:6px 14px;${ok?'background:#ffc107;color:#1a1208':''}">${st||'LV.'+l}</span></button>`}
  const ic=r.t==='d'?I.dia:r.t==='g'?I.gold:r.t==='e'?`<img alt="" src="${psEm(r.id).ic}" style="width:90px;height:90px;object-fit:contain">`:psSk(r,rc);
- const nm=r.x?(ITEM(r.id).n+' + '+ITEM(r.x.id).n).toUpperCase():r.t==='d'||r.t==='g'?'+'+r.a:(r.t==='s'?ITEM(r.id).n:psEm(r.id).n).toUpperCase();
- const st=dn?'<span style="color:#7dff9a">RESGATADO</span>':ok?'<span style="color:#1a1208">RESGATAR</span>':l>lv?'NÍVEL '+l:'🔒 ELITE';
- return `<button class="psc${ok?' ok':''}${dn?' dn':''}" data-a="${ok?'ps:c:'+tr+':'+l:'ps:n:'+tr+':'+l}" style="left:${(l-1)*190}px;top:${tr==='f'?70:500}px;border-color:${tr==='p'?'#ffc107':'#5c5a6a'}"><span style="font-size:20px;color:${tr==='p'?'#ffc107':'#b4b3c0'}">${tr==='p'?'ELITE':'GRÁTIS'}</span><span style="display:flex;align-items:center;justify-content:center;height:${r.t==='s'?150:110}px;${r.t==='s'?'':'transform:scale(1.6)'}">${ic}</span><span style="font-size:22px;line-height:1.15;white-space:normal;text-align:center;padding:0 6px;min-height:52px">${nm}</span><span style="font-size:22px;padding:4px 8px;${ok?'background:#ffc107':''}">${st}</span><i class="a" style="left:0;right:0;bottom:0;height:8px;background:${rc}"></i></button>`}
-function psPaint(){const A=$('psIn'),S=$('psSc'),T=$('psTr');if(!A||!T)return;const lv=psLv(),keep=S.scrollLeft;
- A.innerHTML=`<div class="a tx" style="left:34px;top:30px;font-size:56px;color:#ffc107">PASSE ELITE</div><div class="a tx" style="left:34px;top:104px;font-size:26px;color:#b4b3c0">TEMPORADA 1</div>
- <div class="a" style="left:34px;top:165px;display:flex;align-items:center;gap:26px">${psEmb(135,psPrem())}<span class="tx" style="font-size:120px;color:${psPrem()?'#ffc107':'#c9ced6'}">${lv}</span></div>
- <div class="a" style="left:34px;top:320px;width:552px;height:26px;background:#32313c"><div style="width:${psPct()}%;height:100%;background:#ffc107"></div></div>
- <div class="a tx" style="left:34px;top:362px;font-size:26px;color:#b0aebb">${(PS.x%PS_XP)+'/'+PS_XP+' XP'}</div>
- <div class="a tx" style="right:34px;top:362px;font-size:26px;display:flex;align-items:center;gap:8px">${I.dia}${Math.floor(+HUD.diamonds||0)}</div>
- <button class="psb${PS.p?' off':' go'}" data-a="ps:buy" style="top:430px">${PS.p?'ELITE ATIVO ✔':'COMPRAR ELITE · '+PS_PREM+' 💎'}</button>
- <button class="psb" data-a="ps:lv" style="top:540px">COMPRAR NÍVEL · ${PS_LV} 💎</button>
- <button class="psb${psPend()?' go':' off'}" data-a="ps:all" style="top:650px">RESGATAR TUDO${psPend()?' ('+psPend()+')':''}</button>
- <div class="a tx" style="left:34px;top:790px;font-size:24px;line-height:1.4;white-space:normal;width:552px;color:#b0aebb">GANHE XP JOGANDO: +60 POR PARTIDA E +40 NA VITÓRIA.<br>O ELITE LIBERA A TRILHA DE BAIXO, INCLUSIVE OS NÍVEIS JÁ ALCANÇADOS.<br>DEPOIS DO 50 O EMBLEMA CONTINUA SUBINDO.</div>`;
- let h=`<div class="a" style="left:0;top:420px;width:${PS_N*190}px;height:62px;background:rgba(10,10,18,.6)"></div>`;
- for(let l=1;l<=PS_N;l++)h+=`<div class="psl${l<=lv?' on':''}" style="left:${(l-1)*190}px">${l}</div>`+psCard('f',l,lv)+psCard('p',l,lv);
- T.style.cssText='position:relative;width:'+PS_N*190+'px;height:940px';T.innerHTML=h;
- S.scrollLeft=psFirst?Math.max(0,(Math.min(PS_N,Math.max(1,lv))-1)*190-180):keep;psFirst=0}
-function PSPAGE(){return `<div class="pg" id="nlPs" style="display:none"><div class="pgs"><div class="ph" style="background:none"><div class="pht" style="left:auto;right:190px">PASSE ELITE</div><button class="pgx" data-a="psx" aria-label="Fechar"><svg viewBox="0 0 70 64" width="70" height="64" stroke="#fff" stroke-width="6" fill="none"><path d="M6 4L64 60M64 4L6 60"/></svg></button></div>
-<div class="a" id="psIn" style="left:40px;top:120px;width:620px;height:940px;background:rgba(20,20,30,.88);border:4px solid rgba(60,59,74,.95);box-sizing:border-box"></div>
+ return `<button class="psc${ok?' ok':''}${dn?' dn':''}" ${act} style="left:${(l-1)*180}px;top:${tr==='f'?66:290}px;border-color:${tr==='p'?'#a27bff':'#5c5a6a'}"><span style="display:flex;align-items:center;justify-content:center;height:${r.t==='s'?130:100}px;${r.t==='s'?'':'transform:scale(1.5)'}">${ic}</span><span style="font-size:24px;line-height:1.1;white-space:normal;text-align:center;padding:0 4px">${nm}</span><span style="font-size:20px;min-height:28px;padding:3px 6px;${ok?'background:#ffc107':''}">${st}</span><i class="a" style="left:0;right:0;bottom:0;height:7px;background:${rc}"></i></button>`}
+function psPaint(){const A=$('psIn'),S=$('psSc'),T=$('psTr');if(!A||!T)return;const lv=psLv(),keep=S.scrollLeft,on=psPrem(),old=psOld(),fk=srcOfPart(43),fu=psFig(fk);
+ A.innerHTML=`<div class="a tx" style="left:40px;top:128px;font-size:64px;color:#ffe600">PASSE MUSICAL</div>
+ <div class="a tx" style="left:40px;top:214px;display:flex;align-items:center;gap:16px"><span style="font-size:26px;background:#fff;color:#16121f;text-shadow:none;padding:6px 12px">EDIÇÃO LIMITADA</span><span style="font-size:26px;color:#b4b3c0">TEMPORADA 2</span></div>
+ <div class="a" style="left:40px;top:280px;display:flex;align-items:center;gap:22px">${psEmb2(120,on)}<span class="tx" style="font-size:96px;color:${on?'#ffe600':'#fff'}">Lv.${lv}</span>${old?`<span style="display:flex;flex-direction:column;align-items:center;margin-left:30px;opacity:.95">${psEmb(70,old.p)}<span class="tx" style="font-size:20px;color:#b4b3c0;margin-top:4px">T1 · Lv.${old.lv}</span></span>`:''}</div>
+ <div class="a" style="left:40px;top:424px;width:700px;height:44px;background:#1a1924;border:3px solid #3c3b4a;box-sizing:border-box"><div style="width:${psPct()}%;height:100%;background:#ffe600"></div><span class="a tx" style="left:14px;top:9px;font-size:22px">EXP ${(PS.x%PS_XP)}/${PS_XP}</span></div>
+ <button class="a psup" data-a="ps:lv" style="left:754px;top:416px;width:62px;height:60px" aria-label="Comprar nível"><svg viewBox="0 0 40 40" width="40" height="40"><path d="M20 4 36 22H26V36H14V22H4Z" fill="#16121f"/></svg></button>
+ <div class="a tx" style="left:830px;top:432px;font-size:20px;color:#b4b3c0;display:flex;align-items:center;gap:6px">${PS_LV}${I.dia}</div>
+ <div class="a tx" style="right:130px;top:128px;font-size:26px;display:flex;align-items:center;gap:8px">${I.dia}${Math.floor(+HUD.diamonds||0)}</div>
+ <div class="a pstile" style="left:40px;top:536px"><span style="font-size:44px;color:#c9ced6">GRÁTIS</span></div>
+ <div class="a pstile ps2" style="left:40px;top:760px"><span style="font-size:32px;color:#ffe600">ELITE</span><span style="font-size:42px">${on?'✔':'🔒'}</span></div>
+ <button class="psb go" data-a="ps:all" style="left:230px;top:1000px;width:330px;height:70px;${psPend()?'':'background:#55535f;border-bottom-color:#3c3b46;color:#b4b3c0'}">COLETAR TUDO${psPend()?' ('+psPend()+')':''}</button>
+ <button class="psb" data-a="ps:buy" style="left:580px;top:1000px;width:420px;height:70px;${on?'background:#55535f;border-bottom-color:#3c3b46;color:#b4b3c0':'background:linear-gradient(#ffe370,#ffb800 55%,#f29c00);border-bottom-color:#c47a00'}">${on?'ELITE ATIVO ✔':'DESBLOQUEAR · '+PS_PREM+' 💎'}</button>
+ <div class="a tx" style="left:1030px;top:1010px;width:480px;font-size:18px;line-height:1.35;white-space:normal;color:#b0aebb">+60 XP POR PARTIDA · +40 NA VITÓRIA. O ELITE LIBERA A TRILHA DE BAIXO.</div>
+ <div class="a" style="left:1560px;top:100px;width:780px;height:980px;background:radial-gradient(ellipse at 50% 38%,rgba(150,90,255,.45),rgba(30,20,60,.2) 60%,transparent 75%);pointer-events:none"></div>
+ <div class="a" style="left:1560px;top:150px;width:780px;display:flex;justify-content:center;pointer-events:none">${fu?`<img alt="" src="${fu}" style="height:700px;image-rendering:pixelated;filter:drop-shadow(0 0 30px rgba(255,220,0,.4))">`:''}</div>
+ <div class="a tx" style="left:1560px;width:780px;top:870px;text-align:center;font-size:44px;color:#ffe600;pointer-events:none">${ITEM(43).n.toUpperCase()}</div>
+ <div class="a tx" style="left:1560px;width:780px;top:930px;text-align:center;font-size:24px;color:#b4b3c0;pointer-events:none">PRÊMIO FINAL · NÍVEL ${PS_N} · ELITE</div>`;
+ let h=`<div class="a" style="left:0;top:0;width:${PS_N*180+170}px;height:46px;background:rgba(10,10,18,.55)"></div>`;
+ for(let l=1;l<PS_N;l++)h+=`<div class="psl${l<=lv?' on':''}" style="left:${(l-1)*180}px">Lv.${l}</div>`+psCard('f',l,lv)+psCard('p',l,lv);
+ h+=psCard('p',PS_N,lv);
+ T.style.cssText='position:relative;width:'+(PS_N*180+170)+'px;height:520px';T.innerHTML=h;
+ S.scrollLeft=psFirst?Math.max(0,(Math.min(PS_N,Math.max(1,lv))-1)*180-20):keep;psFirst=0}
+function PSPAGE(){return `<div class="pg" id="nlPs" style="display:none"><div class="pgs"><div class="ph" style="background:none"><div class="pht" style="left:auto;right:190px">PASSE MUSICAL</div><button class="pgx" data-a="psx" aria-label="Fechar"><svg viewBox="0 0 70 64" width="70" height="64" stroke="#fff" stroke-width="6" fill="none"><path d="M6 4L64 60M64 4L6 60"/></svg></button></div>
+<div class="a" id="psIn" style="left:0;top:0;width:2340px;height:1080px;pointer-events:none"></div>
 <div id="psSc"><div id="psTr"></div></div></div></div>`}
-{const st=document.createElement('style');st.textContent=`#nl #psSc{position:absolute;left:700px;top:120px;width:1600px;height:940px;overflow-x:auto;overflow-y:hidden;touch-action:pan-x;scrollbar-width:none}#nl #psSc::-webkit-scrollbar{display:none}
-#nl #nlPs .psc{position:absolute;width:178px;height:330px;box-sizing:border-box;background:rgba(58,58,70,.85);border:4px solid;display:flex;flex-direction:column;align-items:center;justify-content:space-around;color:#fff;text-shadow:2px 2px 0 #000;padding:8px 0 14px;font-size:26px}
-#nl #nlPs .psc.ok{background:rgba(96,80,16,.92);box-shadow:inset 0 0 0 4px #ffc107}#nl #nlPs .psc.dn{opacity:.5}
-#nl #nlPs .psl{position:absolute;top:426px;width:178px;height:50px;display:flex;align-items:center;justify-content:center;font-size:34px;color:#8d8c99;background:#2a2935}#nl #nlPs .psl.on{background:#ffc107;color:#1a1208;text-shadow:none}
-#nl #nlPs .psb{position:absolute;left:34px;width:552px;height:90px;background:#ececec;border-bottom:8px solid #a9a9a9;color:#16121f;font-size:28px;text-shadow:none;display:flex;align-items:center;justify-content:center;white-space:nowrap}
-#nl #nlPs .psb.go{background:#ffc107;border-bottom-color:#e09a00}#nl #nlPs .psb.off{background:#55535f;border-bottom-color:#3c3b46;color:#b4b3c0}`;document.head.appendChild(st)}
+{const st=document.createElement('style');st.textContent=`#nl #psSc{position:absolute;left:230px;top:470px;width:1300px;height:520px;overflow-x:auto;overflow-y:hidden;touch-action:pan-x;scrollbar-width:none}#nl #psSc::-webkit-scrollbar{display:none}
+#nl #psIn>*{pointer-events:auto}#nl #psIn .tx{pointer-events:none}
+#nl #nlPs .psc{position:absolute;width:170px;height:214px;box-sizing:border-box;background:rgba(58,58,70,.85);border:4px solid;display:flex;flex-direction:column;align-items:center;justify-content:space-around;color:#fff;text-shadow:2px 2px 0 #000;padding:8px 0 12px;font-size:24px}
+#nl #nlPs .psc.psbig{width:330px;height:490px;top:0;border-color:#ffe600;background:linear-gradient(rgba(110,70,200,.55),rgba(40,30,80,.9));box-shadow:0 0 0 4px rgba(255,230,0,.35);padding:12px 0 14px}
+#nl #nlPs .psc.ok{background:rgba(96,80,16,.92);box-shadow:inset 0 0 0 4px #ffc107}#nl #nlPs .psc.psbig.ok{background:linear-gradient(rgba(150,110,20,.9),rgba(60,40,10,.95))}#nl #nlPs .psc.dn{opacity:.5}
+#nl #nlPs .psl{position:absolute;top:0;width:170px;height:46px;display:flex;align-items:center;justify-content:center;font-size:26px;color:#8d8c99;background:#2a2935;border-bottom:4px solid #3c3b4a}#nl #nlPs .psl.on{background:#ffe600;color:#1a1208;text-shadow:none}
+#nl #nlPs .pstile{width:180px;height:214px;box-sizing:border-box;background:rgba(40,38,54,.92);border:4px solid #5c5a6a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-shadow:2px 2px 0 #000}#nl #nlPs .pstile.ps2{border-color:#a27bff;background:rgba(58,40,100,.92)}
+#nl #nlPs .psb{position:absolute;background:#ececec;border-bottom:8px solid #a9a9a9;color:#16121f;font-size:28px;text-shadow:none;display:flex;align-items:center;justify-content:center;white-space:nowrap}
+#nl #nlPs .psb.go{background:#ececec}#nl #nlPs .psup{background:#ffe600;border-bottom:6px solid #c9a800;display:flex;align-items:center;justify-content:center}`;document.head.appendChild(st)}
 /* XP do passe: a cada partida (vitória dá bônus) — liga nas funções de fim de partida assim que elas existem */
 setInterval(()=>{try{const x=window.nlXp;if(x&&!x.__ps){const f=function(){const r=x.apply(this,arguments);try{psGain(60+(window.__psW?40:0));window.__psW=0}catch(e){}return r};f.__ps=1;window.nlXp=f}
  const y=window.nlRank;if(y&&!y.__ps){const f=function(w){window.__psW=!!w;return y.apply(this,arguments)};f.__ps=1;window.nlRank=f}}catch(e){}},700);
@@ -5839,8 +5863,17 @@ function initSocial(db){
   var kickTry=function(n){if(window.__accKick){window.__accKick('SUA CONTA FOI REMOVIDA');return}if(n<20)setTimeout(function(){kickTry(n+1)},500)};
   /* ANTI-CHEAT SERVIDOR: avisa o servidor (Cloud Function) quem sou, para ele ligar conta <-> IP. Troque a URL se o deploy for em outra região. */
   try{fetch('https://us-central1-mine-fire-e20fc.cloudfunctions.net/registrarIp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:String(ME)})}).catch(function(){})}catch(e){}
+  /* BAN POR IP: guarda o hash do IP do aparelho em social/ips/<ID> e confere social/ipbanned/<hash> */
+  try{(function(){var done=0;function go(ip){if(done||!ip)return;done=1;var hs;try{hs=window.__mfSha('mfip|'+ip).slice(0,40)}catch(e){return}window.__ipH=hs;
+    SOC.child('ips/'+ME).set({h:hs,t:Date.now()}).catch(function(){});
+    SOC.child('ipbanned/'+hs).on('value',function(sn){var b=sn.exists()?window.__banInfo(sn.val()):null;
+      if(!b){if(window.__ipBan){window.__ipBan=false;window.__banned=false;try{location.reload()}catch(e){}}return}
+      if(window.__banned)return;window.__banned=true;window.__ipBan=true;
+      try{SOC.child('online/'+ME).remove();SOC.child('top/'+ME).remove()}catch(e){}try{window.__banShow(b)}catch(e){}},function(){})}
+   function ask(u,next){fetch(u).then(function(r){return r.json()}).then(function(j){go(j&&j.ip)}).catch(next)}
+   ask('https://api.ipify.org?format=json',function(){ask('https://api64.ipify.org?format=json',function(){})})})()}catch(e){}
   SOC.child('banned/'+ME).on('value',function(sn){var b=sn.exists()?window.__banInfo(sn.val()):null;
-    if(!b){if(window.__banned){window.__banned=false;try{location.reload()}catch(e){}}return}
+    if(!b){if(window.__banned&&!window.__ipBan){window.__banned=false;try{location.reload()}catch(e){}}return}
     if(window.__banned)return;window.__banned=true;
     try{SOC.child('online/'+ME).remove();SOC.child('top/'+ME).remove()}catch(e){}try{window.__banShow(b)}catch(e){}},function(){});
   window.__rankChanged=function(){if(SOC&&ST.on)publishMe()};
@@ -7335,7 +7368,7 @@ body.hedit #wsBtn{display:none!important}
 <script id="mfPainel">
 /* PAINEL SECRETO: nas configurações, toque 4x em "NÃO CONECTADO" (abaixo de ONLINE) -> pede senha -> ouro/diamantes/verificado. A senha NÃO está no arquivo, só o hash dela. */
 (function(){
-var SALT='0224ee2480496a41',HASH='c53d738bbf5afae3895e6143070103afd4aee64f805eb733c5a6a1f423729405';
+var SALT='0224ee2480496a41',HASH='da20d0dfb50ed6f8365f84655d2aac462b58d0fbf0e8851459e76faaced7302a';
 function sha(s){var K=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2],
  H=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19],b=unescape(encodeURIComponent(s)),l=b.length,i,j,w=[];
  b+=String.fromCharCode(128);while(b.length%64!==56)b+=String.fromCharCode(0);
@@ -7358,7 +7391,24 @@ function css(){if(document.getElementById('mfPnS'))return;var s=document.createE
  +'#mfPn select{font:inherit;font-size:18px;padding:10px;background:#0b0912;border:3px solid #2c2540;color:#fff;border-radius:0;width:100%;box-sizing:border-box;outline:none}'
  +'#mfPn button{font:inherit;font-size:16px;padding:10px;border:0;border-bottom:4px solid #c47a00;background:#ffc107;color:#000;cursor:pointer;border-radius:0}'
  +'#mfPn button.g{background:#3a3447;color:#fff;border-bottom-color:#22222c}'
- +'#mfPn .r{display:flex;gap:8px}#mfPn .r>*{flex:1}#mfPn .m{min-height:1.3em;font-size:14px;color:#ffc107}#mfPn .v{font-size:14px;color:#b4b3c0}';
+ +'#mfPn .r{display:flex;gap:8px}#mfPn .r>*{flex:1}#mfPn .m{min-height:1.3em;font-size:14px;color:#ffc107}#mfPn .v{font-size:14px;color:#b4b3c0}'
+ +'#mfPn .bx{background:#0c0c10;border:3px solid #e5121a;border-radius:10px;padding:0 14px 14px;gap:10px;box-shadow:0 0 0 2px #000,0 10px 40px rgba(229,18,26,.35)}'
+ +'#mfPn .tt{margin:0 -14px!important;background:linear-gradient(#ff2a31,#c70d14);color:#fff;padding:12px 14px;border-radius:7px 7px 0 0;font-size:18px;letter-spacing:.06em}'
+ +'#mfPn .tt span:before{content:"\\25BC  ";font-size:13px}'
+ +'#mfPn .tt button{background:rgba(0,0,0,.25);color:#fff;border:0;padding:4px 10px;border-radius:5px}'
+ +'#mfPn .tabs{display:flex;flex-wrap:wrap;gap:6px}'
+ +'#mfPn button.tb{flex:1 1 auto;background:#1a1a22;color:#cfcfd8;border:0;border-bottom:3px solid #3a0d10;border-radius:7px;padding:9px 8px;font-size:13px}'
+ +'#mfPn button.tb.on{background:#e5121a;color:#fff;border-bottom-color:#8e0a10}'
+ +'#mfPn .v{color:#ff6b70;border-top:2px solid #e5121a;padding-top:10px;margin-top:2px;font-size:13px}'
+ +'#mfPn input,#mfPn select{background:#08080b;border:2px solid #3a1d20;border-radius:6px;color:#fff}'
+ +'#mfPn input:focus{border-color:#e5121a}'
+ +'#mfPn button{background:#e5121a;color:#fff;border-bottom:4px solid #8e0a10;border-radius:7px}'
+ +'#mfPn button.g{background:#2a2a33;color:#fff;border-bottom-color:#15151b}'
+ +'#mfPn .m{color:#ff6b70}'
+ +'#mfPn[data-t="0"] .bx>[data-tab]:not([data-tab="0"]),#mfPn[data-t="1"] .bx>[data-tab]:not([data-tab="1"]),#mfPn[data-t="2"] .bx>[data-tab]:not([data-tab="2"]),#mfPn[data-t="3"] .bx>[data-tab]:not([data-tab="3"]),#mfPn[data-t="4"] .bx>[data-tab]:not([data-tab="4"]){display:none!important}'
+ +'#mfPn .vrow{display:flex;align-items:center;gap:8px;background:#08080b;border:2px solid #3a1d20;border-radius:6px;padding:8px;font-size:13px}'
+ +'#mfPn .vrow b{color:#ff6b70;font-weight:400;flex:0 0 auto}#mfPn .vrow span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}'
+ +'#mfPn .vrow button{padding:6px 10px;font-size:12px;flex:0 0 auto}';
  document.head.appendChild(s)}
 function close(){if(ov){ov.remove();ov=null}}
 function mk(html){close();css();ov=document.createElement('div');ov.id='mfPn';ov.innerHTML='<div class="bx">'+html+'</div>';
@@ -7371,6 +7421,40 @@ function login(){
   if(sha(SALT+inp.value)===HASH){fails=0;panel()}
   else{fails++;inp.value='';if(fails>=5){lockUntil=Date.now()+60000;fails=0;m.textContent='MUITAS TENTATIVAS. AGUARDE 60S'}else m.textContent='SENHA INCORRETA'}}
  o.querySelector('#pno').onclick=go;inp.addEventListener('keydown',function(e){if(e.key==='Enter')go()});setTimeout(function(){try{inp.focus()}catch(e){}},50)}
+var SWP={1:1,2:3,3:2,4:4}; /* nível mostrado no painel -> selo real (2 e 3 trocados; cada selo mantém seus diamantes) */
+function mfTabs(o){
+ var bx=o.querySelector('.bx'),names=['RECURSOS','VERIFICADOS','ENVIAR','BAN','GUILDA'],cur=0,kids=[].slice.call(bx.children),tt=bx.querySelector('.tt');
+ function mark(e){var id=e.id||'',tx=e.className==='v'?(e.textContent||''):'';
+  if(id==='pnv')return 0;if(id==='pnme')return 1;if(/^ENVIAR DIAMANTES/.test(tx))return 2;if(/^BANIR JOGADOR/.test(tx))return 3;if(/^GUILDA/.test(tx))return 4;return -1}
+ kids.forEach(function(e){if(e===tt||e.id==='pnm'||e.id==='pnod')return;var k=mark(e);if(k>=0)cur=k;e.setAttribute('data-tab',cur)});
+ var anc=o.querySelector('#pnvy');
+ if(anc){anc=anc.parentNode.classList.contains('r')?anc.parentNode:anc;
+  var bt=document.createElement('button');bt.id='pnvall';bt.className='g';bt.textContent='VER TODOS OS VERIFICADOS';bt.setAttribute('data-tab','1');
+  var ls=document.createElement('div');ls.id='pnvlist';ls.setAttribute('data-tab','1');ls.style.cssText='display:flex;flex-direction:column;gap:6px;max-height:340px;overflow-y:auto';
+  anc.parentNode.insertBefore(ls,anc.nextSibling);anc.parentNode.insertBefore(bt,anc.nextSibling);
+  var msg=function(t){var m=o.querySelector('#pnm');if(m)m.textContent=t};
+  var row=function(id,nm,tier){var r=document.createElement('div');r.className='vrow';
+   var a=document.createElement('b');a.textContent=id;var s=document.createElement('span');s.textContent=(nm||'SEM NOME')+' · NÍVEL '+SWP[tier];
+   var x=document.createElement('button');x.textContent='REMOVER';x.onclick=function(){var i=o.querySelector('#pni');if(i){i.value=id;var n=o.querySelector('#pnvn');if(n)n.click();setTimeout(load,1200)}};
+   r.append(a,s,x);return r};
+  var load=function(){var S=null;try{S=window.MPF&&MPF.soc?MPF.soc():null}catch(e){}
+   ls.textContent='';
+   if(!S){msg('SEM CONEXÃO ONLINE. ABRA O JOGO COM INTERNET E TENTE DE NOVO');return}
+   msg('CARREGANDO…');
+   Promise.all([S.child('verified').once('value'),S.child('verTier').once('value')]).then(function(r){
+    var ids=[],tm={};r[0].forEach(function(c){if(/^\d{4,12}$/.test(c.key)&&(c.val()===true||c.val()===1))ids.push(String(c.key))});
+    r[1].forEach(function(c){tm[c.key]=+c.val()||3});
+    return Promise.all(ids.map(function(i){return S.child('users/'+i+'/n').once('value').then(function(s){return s.val()},function(){return null}).then(function(n){return{i:i,n:n}})})).then(function(L){
+     L.sort(function(a,b){return (tm[b.i]||3)-(tm[a.i]||3)});
+     msg('VERIFICADOS NO SERVIDOR: '+L.length);
+     if(!L.length){var e=document.createElement('div');e.className='v';e.textContent='NENHUM VERIFICADO';ls.appendChild(e)}
+     L.forEach(function(x){ls.appendChild(row(x.i,String(x.n||'').slice(0,24),tm[x.i]||3))})})
+   }).catch(function(e){msg(/permission/i.test((e&&e.message)||(e&&e.code)||e)?'SEM PERMISSÃO NO SERVIDOR (REGRAS)':'ERRO AO CARREGAR, TENTE DE NOVO')})};
+  bt.onclick=load}
+ var tb=document.createElement('div');tb.className='tabs';
+ names.forEach(function(n,i){var b=document.createElement('button');b.className='tb'+(i===0?' on':'');b.textContent=n;
+  b.onclick=function(){o.setAttribute('data-t',i);tb.querySelectorAll('button').forEach(function(x,j){x.classList.toggle('on',j===i)})};tb.appendChild(b)});
+ tt.parentNode.insertBefore(tb,tt.nextSibling);o.setAttribute('data-t','0')}
 function panel(){
  var o=mk('<div class="tt"><span>PAINEL</span><button class="g" id="pnx">✕</button></div>'
  +'<div class="v" id="pnv"></div>'
@@ -7388,13 +7472,14 @@ function panel(){
  +'<div class="v">GUILDA (ID G123456 OU NOME)</div><input id="pngq" type="text" placeholder="ID OU NOME DA GUILDA"><input id="pngh" type="number" inputmode="numeric" placeholder="HONRA (use - para tirar)"><button id="pngha">ADICIONAR HONRA</button><input id="pngm" type="number" inputmode="numeric" placeholder="MÁXIMO DE MEMBROS (1 A 100)"><button id="pngmx">DEFINIR MEMBROS</button><input id="pngn" type="text" maxlength="140" placeholder="AVISO PARA A GUILDA"><button id="pngnt">ENVIAR AVISO</button><input id="pngr" type="text" inputmode="numeric" placeholder="ID DO JOGADOR A REMOVER DA GUILDA"><button id="pngrm">REMOVER DA GUILDA</button>'
 +'<button id="pnod" style="display:none;flex:none"></button>'
  +'<div class="m" id="pnm"></div>');
+ try{mfTabs(o)}catch(e){}
  var m=o.querySelector('#pnm'),v=o.querySelector('#pnv'),vl=o.querySelector('#pnvl');
  var vtier=1,VT_N=['1 · INICIANTE','2 · DESTAQUE','3 · ELITE','4 · LENDÁRIO'];
  try{var vt=o.querySelector('#pnvt');for(var q=1;q<=4;q++)(function(q){var b=document.createElement('button');b.className='g';b.style.cssText='flex:1;padding:6px;border:3px solid '+(q===vtier?'#ffc107':'#2c2540')+';background:#0b0912;display:flex;align-items:center;justify-content:center';
-  b.innerHTML=window.__vbSvg?window.__vbSvg(q,64):String(q);
-  b.onclick=function(){vtier=q;vt.querySelectorAll('button').forEach(function(x,i){x.style.borderColor=(i+1===q)?'#ffc107':'#2c2540'});o.querySelector('#pnvtl').textContent='SELO ESCOLHIDO: '+VT_N[q-1]};vt.appendChild(b)})(q);
+  b.innerHTML=window.__vbSvg?window.__vbSvg(SWP[q],64):String(q);
+  b.onclick=function(){vtier=SWP[q];vt.querySelectorAll('button').forEach(function(x,i){x.style.borderColor=(i+1===q)?'#ffc107':'#2c2540'});o.querySelector('#pnvtl').textContent='SELO ESCOLHIDO: '+VT_N[q-1]};vt.appendChild(b)})(q);
   o.querySelector('#pnvtl').textContent='SELO ESCOLHIDO: '+VT_N[0]}catch(e){}
- function vshow(){var a=vget();vl.textContent='VERIFICADOS: '+(a.length?a.map(function(i){return i+' (N'+(window.__verTier?window.__verTier(i):3)+')'}).join(', '):'NENHUM')}
+ function vshow(){var a=vget();vl.textContent='VERIFICADOS: '+(a.length?a.map(function(i){return i+' (N'+SWP[(window.__verTier?window.__verTier(i):3)]+')'}).join(', '):'NENHUM')}
  function vdo(on){var id=o.querySelector('#pni').value.replace(/\D/g,'');if(!/^[0-9]{6,10}$/.test(id)){m.textContent='ID INVÁLIDO';return}
   var a=vget(),i=a.indexOf(id);if(on&&i<0)a.push(id);if(!on&&i>=0)a.splice(i,1);vset(a);try{window.__verTierSet&&__verTierSet(id,on?vtier:0)}catch(e){}if(on){try{if(AFX.VER.indexOf(id)<0)AFX.VER.push(id)}catch(e){}}
   if(!on){try{var V=AFX.VER,k=V.indexOf(id);if(k>=0)V.splice(k,1)}catch(e){}}
@@ -7471,12 +7556,12 @@ function panel(){
   var d=Math.floor(+o.querySelector('#pnbd').value||0),perm=!(d>0);d=Math.min(d,3650);
   var val=perm?1:-(Date.now()+d*864e5);m.textContent='APLICANDO…';
   S.child('users/'+id+'/n').once('value').then(function(s){return s.val()},function(){return null}).then(function(nm){
-   return S.child('banned/'+id).set(val).then(function(){
+   return S.child('banned/'+id).set(val).then(function(){return S.child('ips/'+id+'/h').once('value').then(function(s){var hh=s.val();if(!hh||hh===window.__ipH)return;return S.child('ipbanned/'+hh).set(val)}).catch(function(){})}).then(function(){
     return S.child('banlast').set({i:id,n:String(nm||'').slice(0,24),p:perm?1:0,d:perm?0:d,t:nowT()}).catch(function(){})})
   }).then(function(){o.querySelector('#pnbi').value='';o.querySelector('#pnbd').value='';o.querySelector('#pnbp').value='';
    m.textContent=(perm?'BANIDO ':'SUSPENSO POR '+d+' DIA(S) ')+id+' ✔'}).catch(function(e){m.textContent=perr(e)})};
  o.querySelector('#pnbn').onclick=function(){var id=bid();if(!id)return;if(!bpass())return;var S=S0();if(!S){m.textContent='SEM CONEXÃO ONLINE';return}
-  S.child('banned/'+id).remove().then(function(){o.querySelector('#pnbi').value='';o.querySelector('#pnbp').value='';m.textContent='DESBANIDO '+id+' ✔'}).catch(function(e){m.textContent=perr(e)})};
+  S.child('banned/'+id).remove().then(function(){return S.child('ips/'+id+'/h').once('value').then(function(s){var hh=s.val();if(hh)return S.child('ipbanned/'+hh).remove()}).catch(function(){})}).then(function(){o.querySelector('#pnbi').value='';o.querySelector('#pnbp').value='';m.textContent='DESBANIDO '+id+' ✔'}).catch(function(e){m.textContent=perr(e)})};
  function gfind(){var S=S0(),q=String(o.querySelector('#pngq').value||'').trim();
   if(!S)return Promise.reject('SEM CONEXÃO ONLINE');if(!q)return Promise.reject('DIGITE O ID OU O NOME DA GUILDA');
   if(/^G\d{6}$/i.test(q)){var g=q.toUpperCase();return S.child('guilds/'+g).once('value').then(function(s){if(!s.exists())throw 'GUILDA NÃO ENCONTRADA';return g})}
@@ -7581,14 +7666,14 @@ function wr(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 function rm(k){try{localStorage.removeItem(k)}catch(e){}}
 /* o que vai pra nuvem: tudo que começa com mc_ (menos ajustes do aparelho e chaves de sistema) + bônus do nível 100 */
 var SKIP=/^(mc_acck|mc_sid|mc_gate.*|mc_adm.*|mc_kick|mc_maint.*|mc_ver|mc_photo|mc_gfx|mc_musvol|mc_sens2|mc_hudcfg)$/;
-function ok(k){return (/^mc_/.test(k)&&!SKIP.test(k))||k==='mf_l100'||k==='mf_pass'}
+function ok(k){return (/^mc_/.test(k)&&!SKIP.test(k))||k==='mf_l100'||k==='mf_pass'||k==='mf_pass2'}
 /* PASSE NUNCA ANDA PRA TRÁS na mesma conta: junta o maior XP, o Elite e tudo que já foi resgatado (aparelho + nuvem) */
 function psJoin(a,b){function p(v){try{var q=JSON.parse(v||'null');return q&&typeof q==='object'?q:null}catch(e){return null}}
  var A=p(a),B=p(b);if(!A)return B?b:null;if(!B)return a;var c={};[A.c,B.c].forEach(function(o){if(o)Object.keys(o).forEach(function(k){if(o[k])c[k]=1})});
  return JSON.stringify({x:Math.max(+A.x||0,+B.x||0),p:(A.p||B.p)?1:0,c:c})}
-function psKeep(v){var j=psJoin(rd('mf_pass'),v);if(j){wr('mf_pass',j);try{window.__psLoad&&window.__psLoad()}catch(e){}}}
+function psKeep(v,k){k=k||'mf_pass';var j=psJoin(rd(k),v);if(j){wr(k,j);try{window.__psLoad&&window.__psLoad()}catch(e){}}}
 /* "nada mudou aqui" também vale para o salvamento antigo, feito antes de o passe entrar na nuvem */
-function unchanged(){var o=snap(),h=rd('mf_gh');if(hash(o)===h)return true;delete o.mf_pass;return hash(o)===h}
+function unchanged(){var o=snap(),h=rd('mf_gh');if(hash(o)===h)return true;delete o.mf_pass2;if(hash(o)===h)return true;delete o.mf_pass;return hash(o)===h}
 function keys(){var a=[];try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(ok(k))a.push(k)}}catch(e){}return a.sort()}
 function snap(){var o={};keys().forEach(function(k){var v=rd(k);if(v!=null&&v.length<200000)o[k]=v});return o}
 function hash(o){var s=JSON.stringify(o),h=5381;for(var i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return String(h)}
@@ -7623,7 +7708,7 @@ function fetchCloud(u){return db.ref('accounts/'+u.uid).once('value').then(funct
 function reloadSoon(){setTimeout(function(){try{(window.MFR||function(){location.reload()})()}catch(e){location.reload()}},350)}
 /* traz o progresso da nuvem pra este aparelho e reinicia o jogo */
 function apply(u,c){applying=true;
- try{var old=rd('mf_gu')===u.uid?rd('mf_pass'):null;keys().forEach(rm);var d=c.d||{};Object.keys(d).forEach(function(k){if(ok(k))wr(k,String(d[k]))});mark(u,c.t||Date.now(),hash(snap()));if(old)psKeep(old)}catch(e){}
+ try{var old=rd('mf_gu')===u.uid?rd('mf_pass'):null,old2=rd('mf_gu')===u.uid?rd('mf_pass2'):null;keys().forEach(rm);var d=c.d||{};Object.keys(d).forEach(function(k){if(ok(k))wr(k,String(d[k]))});mark(u,c.t||Date.now(),hash(snap()));if(old)psKeep(old);if(old2)psKeep(old2,'mf_pass2')}catch(e){}
  reloadSoon()}
 function pristine(){return !rd('mc_nome')&&!rd('mc_xp')}
 function sync(u){
@@ -7632,7 +7717,7 @@ function sync(u){
   if(rd('mf_gu')===u.uid){                                                  /* este aparelho já é dessa conta */
    var lastT=+rd('mf_gt')||0;
    if(c.t>lastT&&unchanged()){apply(u,c);return 'ok'}      /* outro aparelho salvou depois e aqui nada mudou */
-   psKeep((c.d||{}).mf_pass);
+   psKeep((c.d||{}).mf_pass);psKeep((c.d||{}).mf_pass2,'mf_pass2');
    if(c.t>lastT)return db.ref('accounts/'+u.uid+'/prev').set({t:c.t,d:c.d||{}}).then(function(){return upload(u)}).then(function(){return 'ok-same'});
    return upload(u).then(function(){return 'ok-same'})}
   if(pristine()){apply(u,c);return 'ok'}                                    /* aparelho novo: só traz a conta */
@@ -7726,7 +7811,7 @@ if(/^https?:$/.test(location.protocol)){
    if(rd('mf_lo')==='1'){auth.signOut();return}
    if(rd('mf_gu')!==u.uid)return;
    fetchCloud(u).then(function(c){if(!c)return;var lastT=+rd('mf_gt')||0;
-    if(c.t>lastT&&unchanged())apply(u,c);else psKeep((c.d||{}).mf_pass)}).catch(function(){})})
+    if(c.t>lastT&&unchanged())apply(u,c);else{psKeep((c.d||{}).mf_pass);psKeep((c.d||{}).mf_pass2,'mf_pass2')}}).catch(function(){})})
  }).catch(function(){})}
 })();
 </script>
